@@ -1,0 +1,1793 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store - Home</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <span class="loader"></span>
+    </div>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-indicator" id="scrollIndicator">
+      <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+
+    <!-- ===== START: HEADER & NAVBAR SECTION ===== -->
+    <header class="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="./index.html">LOGO</a>
+
+          <!-- Mobile Toggle Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation Menu -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <!-- HOME Link -->
+              <li class="nav-item">
+                <a class="nav-link active" href="./index.html">HOME</a>
+              </li>
+
+              <!-- SHOP Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="shopDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  SHOP
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./products-list.html"
+                      >Active Casual</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Featured Products</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                  <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">On Sale / Discounted</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- COLLECTIONS Link -->
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="./collections.html"
+                  >COLLECTIONS</a
+                >
+              </li>
+
+              <!-- WATCHES Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="watchesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  WATCHES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Luxury Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Sports Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Smart Watches</a></li>
+                </ul>
+              </li>
+
+              <!-- MORE Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="moreDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  MORE
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./Contact.html"
+                      >Contact us</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="./Blog.html">Blog</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Search and User Icons -->
+            <div class="d-flex align-items-center">
+              <!-- Search Box -->
+              <div class="search-box">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  id="searchInput"
+                />
+                <button type="submit" id="searchBtn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+
+              <!-- Header Icons -->
+              <div class="header-icons ms-3">
+                <!-- User Icon -->
+                <a
+                  href="#"
+                  class="icon-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  <i class="far fa-user"></i>
+                </a>
+                <!-- Wishlist Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="far fa-heart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+                <!-- Cart Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span class="cart-badge">5</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ===== END: HEADER & NAVBAR SECTION ===== -->
+
+    <!-- ===== START: LOGIN/REGISTER MODAL ===== -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="auth-container">
+              <!-- Close Button -->
+              <button type="button" class="close-btn" data-bs-dismiss="modal">
+                <i class="fas fa-times"></i>
+              </button>
+              <!-- Tabs -->
+              <div class="auth-tabs mb-4">
+                <button class="auth-tab active" onclick="showTab('login')">
+                  LOGIN
+                </button>
+                <button class="auth-tab" onclick="showTab('register')">
+                  REGISTER
+                </button>
+              </div>
+
+              <!-- Login Form -->
+              <div id="loginTab" class="auth-form active">
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3 text-end">
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3">
+                    SIGN IN
+                  </button>
+
+                  <div class="divider">
+                    <span>or</span>
+                  </div>
+
+                  <button type="button" class="btn btn-google w-100 mb-3">
+                    <img
+                      src="images/Google__G__logo.svg.png"
+                      alt="Google"
+                      class="google-logo"
+                    />
+                    Continue with Google
+                  </button>
+
+                  <button type="button" class="btn btn-facebook w-100">
+                    <img
+                      src="images/2021_Facebook_icon.svg.png"
+                      alt="Facebook"
+                      class="facebook-logo"
+                    />
+                    Continue with Facebook
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    No account yet?
+                    <a
+                      href="#"
+                      class="switch-link"
+                      onclick="showTab('register')"
+                      >Create an account</a
+                    >
+                  </p>
+                </form>
+              </div>
+
+              <!-- Register Form -->
+              <div id="registerTab" class="auth-form">
+                <form id="registerForm">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First name"
+                        required
+                      />
+                    </div>
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Last name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirm password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3">
+                    CREATE ACCOUNT
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    Already have an account?
+                    <a href="#" class="switch-link" onclick="showTab('login')"
+                      >Sign in</a
+                    >
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END: LOGIN/REGISTER MODAL ===== -->
+
+    <!-- ===== START: HERO SLIDER SECTION ===== -->
+    <section class="hero-slider">
+      <!-- Slide 1 -->
+      <div class="slide slide-1 active">
+        <img
+          src="images/photo-1490481651871-ab68de25d43d.avif"
+          alt="Fall Collection"
+          class="slide-image"
+        />
+        <div class="slide-content">
+          <h1 class="slide-title">The Fall Collection Of Women Dresses</h1>
+          <p class="slide-subtitle">Holiday Deals On Fashion Festive 2025</p>
+          <a href="#" class="slide-btn glow-on-hover">SHOP NOW</a>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide slide-2">
+        <img
+          src="images/main-banner-2.webp"
+          alt="Women Fashion"
+          class="slide-image"
+        />
+        <div class="slide-content">
+          <h1 class="slide-title">Fashion For Everyday For Women Style</h1>
+          <p class="slide-subtitle">Holiday Deals On Fashion Festive 2025</p>
+          <a href="#" class="slide-btn glow-on-hover">SHOP NOW</a>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide slide-3">
+        <img
+          src="images/photo-1515372039744-b8f02a3ae446.avif"
+          alt="Women Dresses"
+          class="slide-image"
+        />
+        <div class="slide-content">
+          <h1 class="slide-title">The Fall Collection Of Women Dresses</h1>
+          <p class="slide-subtitle">Up to 50% off on selected items</p>
+          <a href="#" class="slide-btn glow-on-hover">SHOP SALE</a>
+        </div>
+      </div>
+
+      <!-- Slider Controls -->
+      <div class="slider-controls">
+        <button class="slider-dot active" data-slide="0"></button>
+        <button class="slider-dot" data-slide="1"></button>
+        <button class="slider-dot" data-slide="2"></button>
+      </div>
+    </section>
+    <!-- ===== END: HERO SLIDER SECTION ===== -->
+
+    <!-- ===== START: FEATURES SECTION ===== -->
+    <section class="features-section reveal">
+      <div class="feature-box stagger-animate">
+        <div class="icon-circle">
+          <img src="images/services-1_49x.png" alt="icon" />
+        </div>
+        <div class="feature-content">
+          <h5>Free Shipping for orders $130</h5>
+          <p>
+            Lorem Ipsum is simply dummy text of more has been the typesetting
+            industry.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-box stagger-animate">
+        <div class="icon-circle">
+          <img src="images/services-2_49x.png" alt="icon" />
+        </div>
+        <div class="feature-content">
+          <h5>Money Back Guarantee</h5>
+          <p>
+            Lorem Ipsum is simply dummy text of more has been the typesetting
+            industry.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature-box stagger-animate">
+        <div class="icon-circle">
+          <img src="images/services-3_49x.png" alt="icon" />
+        </div>
+        <div class="feature-content">
+          <h5>24/7 Support Services</h5>
+          <p>
+            Lorem Ipsum is simply dummy text of more has been the typesetting
+            industry.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: FEATURES SECTION ===== -->
+
+    <!-- ===== START: CATEGORIES SECTION ===== -->
+    <section class="categories-section reveal">
+      <div class="container my-5">
+        <div class="row g-4">
+          <!-- Womens Clothes -->
+          <div class="col-md-3">
+            <div class="category-card stagger-animate">
+              <img
+                src="images/photo-1520975916090-3105956dac38.avif"
+                alt=""
+                class="img-fluid"
+              />
+              <span class="category-label">Womens Clothes</span>
+            </div>
+          </div>
+
+          <!-- Sneakers Shoes -->
+          <div class="col-md-3">
+            <div class="category-card stagger-animate">
+              <img
+                src="images/photo-1595950653106-6c9ebd614d3a.avif"
+                alt=""
+                class="img-fluid"
+              />
+              <span class="category-label">Sneakers Shoes</span>
+            </div>
+          </div>
+
+          <!-- Bridal Watch -->
+          <div class="col-md-3">
+            <div class="category-card stagger-animate">
+              <img
+                src="images/photo-1523170335258-f5ed11844a49.avif"
+                alt=""
+                class="img-fluid"
+              />
+              <span class="category-label">Bridal Watch</span>
+            </div>
+          </div>
+
+          <!-- Casual Backpack -->
+          <div class="col-md-3">
+            <div class="category-card stagger-animate">
+              <img
+                src="images/photo-1553062407-98eeb64c6a62.avif"
+                alt=""
+                class="img-fluid"
+              />
+              <span class="category-label">Casual Backpack</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: CATEGORIES SECTION ===== -->
+
+    <!-- ===== START: BANNER SECTION ===== -->
+    <section class="banner-section reveal">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="banner-box stagger-animate">
+              <h3 class="banner-title">FREE SHIPPING OVER $99.00</h3>
+              <p>Two-day delivery on thousands of items</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="banner-box stagger-animate">
+              <h3 class="banner-title">AMAZING VALUE EVERYDAY</h3>
+              <p>Items you love at prices that fit your budget</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: BANNER SECTION ===== -->
+
+    <!-- ===== START: DEALS OF THE DAY SECTION ===== -->
+    <section class="deals-section reveal">
+      <div class="container">
+        <!-- Header -->
+        <div class="deal-header">
+          <h2>Latest products</h2>
+          <div class="timer-box">
+            <span>Hurry up! Offers end in :</span>
+            <div class="timer">
+              <span>752</span>
+              <span>20</span>
+              <span>29</span>
+              <span>45</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Slider -->
+        <div class="deal-slider-wrapper">
+          <div class="deal-grid">
+            <!-- Card 1 -->
+            <a href="./product-detail.html?id=1" class="product-card-link">
+              <div class="product-card stagger-animate">
+                <span class="discount">-24%</span>
+                <img
+                  src="images/photo-1560769629-975ec94e6a86.avif"
+                  alt="shoes"
+                  class="img-fluid"
+                />
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(1);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="add-to-cart-btn glow-on-hover"
+                  onclick="
+                    event.preventDefault();
+                    addToCart(1);
+                  "
+                >
+                  Add To Cart
+                </button>
+                <div class="product-info">
+                  <small>PUMA</small>
+                  <h6>Reptilian Toe-Ring Slip-On Sandals For Women</h6>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <div class="price">
+                    <span class="old">$25.00</span>
+                    <span class="new">$19.00</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="./product-detail.html?id=2" class="product-card-link">
+              <div class="product-card stagger-animate">
+                <span class="discount">-14%</span>
+                <img
+                  src="images/photo-1553062407-98eeb64c6a62.avif"
+                  alt="Bag"
+                  class="img-fluid"
+                />
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(2);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="add-to-cart-btn glow-on-hover"
+                  onclick="
+                    event.preventDefault();
+                    addToCart(2);
+                  "
+                >
+                  Add To Cart
+                </button>
+                <div class="product-info">
+                  <small>PUMA</small>
+                  <h6>
+                    Safari Select Classic Messenger Bag with Laptop and Tablet
+                    Sleeve
+                  </h6>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <div class="price">
+                    <span class="old">$29.00</span>
+                    <span class="new">$25.00</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="./product-detail.html?id=3" class="product-card-link">
+              <div class="product-card stagger-animate">
+                <span class="discount">-5%</span>
+                <img src="images/category-2.webp" alt="Watch" />
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(3);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="add-to-cart-btn glow-on-hover"
+                  onclick="
+                    event.preventDefault();
+                    addToCart(3);
+                  "
+                >
+                  Add To Cart
+                </button>
+                <div class="product-info">
+                  <small>LEVI'S</small>
+                  <h6>MVMT Leather Boulevard Analog White Dial Women Watch</h6>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <div class="price">
+                    <span class="old">$39.00</span>
+                    <span class="new">$37.00</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="./product-detail.html?id=4" class="product-card-link">
+              <div class="product-card stagger-animate">
+                <span class="discount">-14%</span>
+                <img
+                  src="images/photo-1560769629-975ec94e6a86.avif"
+                  alt="shoes"
+                  class="img-fluid"
+                />
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(4);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  class="add-to-cart-btn glow-on-hover"
+                  onclick="
+                    event.preventDefault();
+                    addToCart(4);
+                  "
+                >
+                  Add To Cart
+                </button>
+                <div class="product-info">
+                  <small>PUMA</small>
+                  <h6>Lizoleor Slip On Block Sandal Women Pointed Toe</h6>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <div class="price">
+                    <span class="old">$14.00</span>
+                    <span class="new">$12.00</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Slider Navigation -->
+          <button class="slider-nav slider-nav-prev" data-direction="prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="slider-nav slider-nav-next" data-direction="next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: DEALS OF THE DAY SECTION ===== -->
+
+    <!-- ===== START: PROMO BANNER SECTION ===== -->
+    <section class="promo-banner reveal">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <img
+              src="images/Screenshot_10.png"
+              class="img-fluid w-100 rounded-3"
+              alt="Men T-Shirt"
+            />
+          </div>
+          <div class="col-lg-6">
+            <h3 class="promo-title">Roland Grand White Men Short T-Shirt</h3>
+            <p class="mb-4">
+              The Ultimate Guide To Marketing Strategies To Sales
+            </p>
+            <a href="#" class="slide-btn glow-on-hover">SHOP NOW</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: PROMO BANNER SECTION ===== -->
+
+    <!-- ===== START: TRENDING PRODUCTS SECTION ===== -->
+    <section class="trending-section reveal">
+      <div class="container">
+        <h2 class="section-title">Trending Products</h2>
+        <div class="product-tabs">
+          <button class="tab-btn active">NEW ARRIVAL</button>
+          <button class="tab-btn">FEATURED</button>
+          <button class="tab-btn">BEST SELLING</button>
+        </div>
+
+        <div class="row g-4" id="storeProductsGrid">
+          <!-- Product 1 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=1" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">NEW</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(1);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/category-1.webp"
+                  class="product-image"
+                  alt="PUMA Sandal"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    PUMA Lizoleor Slip On Block Sandal Women Pointed Toe
+                  </h6>
+                  <div class="product-price">
+                    $12.00 <span class="old-price">$14.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(1);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=2" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">NEW</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(2);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1576566588028-4147f3842f27.avif"
+                  class="product-image"
+                  alt="WRANGLER"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    WRANGLER NOTWILD Beanies for Boys and Girls Double Layer
+                  </h6>
+                  <div class="product-price">$34.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(2);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=3" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(3);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1529374255404-311a2a4f1fd9.avif"
+                  class="product-image"
+                  alt="LIVERPOOL"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    LIVERPOOL Emporio Armani Men's Grey Box Multi Logo
+                    Sweatshirt
+                  </h6>
+                  <div class="product-price">$89.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(3);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=4" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">SALE</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(4);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1541099649105-f69ad21f3246.avif"
+                  class="product-image"
+                  alt="Levi's"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Levi's LookbookStore Women's Distressed Jeans Ripped Denim
+                    Shorts
+                  </h6>
+                  <div class="product-price">$25.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(4);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 5 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=5" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="featured">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(5);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1553062407-98eeb64c6a62.avif"
+                  class="product-image"
+                  alt="LIVERPOOL"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    LIVERPOOL Buy Grey Handbags For Women By Brics
+                  </h6>
+                  <div class="product-price">
+                    $44.00 <span class="old-price">$55.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(5);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=6" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="featured">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(6);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1523170335258-f5ed11844a49.avif"
+                  class="product-image"
+                  alt="ALLEN SOLLY"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    ALLEN SOLLY Buy Latest Women's Buttoned Shirt with Spread
+                    Collar
+                  </h6>
+                  <div class="product-price">$20.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(6);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 7 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=7" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="best">
+                <span class="product-badge">SALE</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(7);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1490481651871-ab68de25d43d.avif"
+                  class="product-image"
+                  alt="PUMA"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    PUMA DL Woman Regular Fit Solid Cut Away Collar Casual Shirt
+                  </h6>
+                  <div class="product-price">
+                    $50.00 <span class="old-price">$60.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(7);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 8 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=8" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="best">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(8);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1595950653106-6c9ebd614d3a.avif"
+                  class="product-image"
+                  alt="Bubbleroom"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Bubbleroom KNOT L/S Viscose Shirt - Button-Down Blouse
+                  </h6>
+                  <div class="product-price">$25.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(8);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 9 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=9" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">NEW</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(9);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/02_1990382d-0957-4f77-8dce-c875a4bdb6b4.webp"
+                  class="product-image"
+                  alt="Premium Watch"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Premium Stainless Steel Luxury Analog Watch
+                  </h6>
+                  <div class="product-price">
+                    $75.00 <span class="old-price">$95.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(9);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 10 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=10" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">NEW</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(10);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/02_7b9a04c4-12a7-4317-8b2c-34a160a507be.webp"
+                  class="product-image"
+                  alt="Designer Backpack"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Designer Leather Backpack with Multiple Compartments
+                  </h6>
+                  <div class="product-price">$65.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(10);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 11 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=11" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(11);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/02_d33fe0cb-ce66-4c15-8617-983088ec461f.webp"
+                  class="product-image"
+                  alt="Sports Shoes"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    High Performance Running Sports Shoes Unisex
+                  </h6>
+                  <div class="product-price">
+                    $55.00 <span class="old-price">$75.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(11);
+                    "
+                  >
+                    Add to Card
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 12 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=12" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">POPULAR</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(12);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/02_3787749b-6952-4a6a-b37b-79bc210703d9.webp"
+                  class="product-image"
+                  alt="Casual Jacket"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Premium Casual Denim Jacket for All Seasons
+                  </h6>
+                  <div class="product-price">$48.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(12);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 13 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=13" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="featured">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(13);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1594938298603-c8148c4dae35.avif"
+                  class="product-image"
+                  alt="Casual T-Shirt"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Classic Cotton Casual T-Shirt Multiple Colors
+                  </h6>
+                  <div class="product-price">$18.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(13);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 14 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=14" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="featured">
+                <span class="product-badge">SALE</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(14);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1548036328-c9fa89d128fa.avif"
+                  class="product-image"
+                  alt="Elegant Scarf"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Elegant Silk Scarf Accessory for Women
+                  </h6>
+                  <div class="product-price">
+                    $22.00 <span class="old-price">$35.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(14);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 15 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=15" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="best">
+                <span class="product-badge">BESTSELLER</span>
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(15);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/02_d33fe0cb-ce66-4c15-8617-983088ec461f.webp"
+                  class="product-image"
+                  alt="Sunglasses"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Premium UV Protection Sunglasses for Men and Women
+                  </h6>
+                  <div class="product-price">$45.00</div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(15);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 16 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html?id=16" class="product-card-link">
+              <div class="product-card stagger-animate" data-tab="best">
+                <div class="side-buttons">
+                  <button
+                    type="button"
+                    class="side-button wishlist-icon"
+                    onclick="
+                      event.preventDefault();
+                      toggleWishlist(16);
+                    "
+                  >
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+                <img
+                  src="images/photo-1572635196237-14b3f281503f.avif"
+                  class="product-image"
+                  alt="Fashion Handbag"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    Stylish Handbag Premium Quality Leather
+                  </h6>
+                  <div class="product-price">
+                    $68.00 <span class="old-price">$85.00</span>
+                  </div>
+                  <button
+                    type="button"
+                    class="add-to-cart-btn glow-on-hover"
+                    onclick="
+                      event.preventDefault();
+                      addToCart(16);
+                    "
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="#" class="slide-btn glow-on-hover px-3">VIEW ALL PRODUCTS</a>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: TRENDING PRODUCTS SECTION ===== -->
+
+    <!-- ===== START: STREET FASHION SECTION ===== -->
+    <section class="street-fashion reveal">
+      <div class="page-width">
+        <div class="banners two-banner">
+          <!-- Banner 1 -->
+          <div class="sub-banner banner-1 stagger-animate">
+            <div class="banner-inner">
+              <a href="#">
+                <img src="images/cms-banner-2.webp" alt="Street Fashion" />
+              </a>
+            </div>
+            <div class="subbanner-description left">
+              <div class="subbanner-heading">
+                <p>Street Fashion Not<br />For The Street</p>
+              </div>
+              <div class="description">
+                <p>Latest Men's Trends This Season</p>
+              </div>
+              <div class="text-button">
+                <a href="#" class="shop-btn glow-on-hover">SHOP NOW</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Banner 2 -->
+          <div class="sub-banner banner-2 stagger-animate">
+            <div class="banner-inner">
+              <a href="#">
+                <img src="images/cms-banner-1.webp" alt="Elegant Designs" />
+              </a>
+            </div>
+            <div class="subbanner-description left">
+              <div class="subbanner-heading">
+                <p>Elegant Designs To<br />Bloom Your</p>
+              </div>
+              <div class="description">
+                <p>Best Sweatshirts And Tracksuits</p>
+              </div>
+              <div class="text-button">
+                <a href="#" class="shop-btn glow-on-hover">SHOP NOW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: STREET FASHION SECTION ===== -->
+
+    <!-- ===== START: TESTIMONIAL SECTION ===== -->
+    <section class="testimonial-section reveal">
+      <div class="container">
+        <div class="swiper testimonial-slider">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card stagger-animate">
+                <p>
+                  "Eiusmod tempor incididunt ut labore et dolore magna aliqua
+                  quis ipsum suspendisse ultrices gravida risus commodo."
+                </p>
+                <div class="client-info">
+                  <img
+                    src="images/tes-1.avif"
+                    class="client-avatar"
+                    alt="Stefanie Rashford"
+                  />
+                  <div>
+                    <h6>Stefanie Rashford</h6>
+                    <small>Fashion Blogger</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card stagger-animate">
+                <p>
+                  "Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat."
+                </p>
+                <div class="client-info">
+                  <img
+                    src="images/tes-2.avif"
+                    class="client-avatar"
+                    alt="Emma Watson"
+                  />
+                  <div>
+                    <h6>Emma Watson</h6>
+                    <small>Style Influencer</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <div class="testimonial-card stagger-animate">
+                <p>
+                  "Duis aute irure dolor in reprehenderit in voluptate velit
+                  esse cillum dolore eu fugiat nulla pariatur."
+                </p>
+                <div class="client-info">
+                  <img
+                    src="images/tes-2.avif"
+                    class="client-avatar"
+                    alt="John Miller"
+                  />
+                  <div>
+                    <h6>John Miller</h6>
+                    <small>Creative Director</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: TESTIMONIAL SECTION ===== -->
+
+    <!-- ===== START: BLOG SECTION ===== -->
+    <section class="blog-section reveal">
+      <div class="container">
+        <h2 class="section-title">Our Latest Blog</h2>
+        <div class="row g-4">
+          <!-- Blog 1 -->
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/Blog-img-1.avif"
+                class="img-fluid w-100"
+                alt="Blog 1"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 7, 2025</div>
+                <h5>Quick Tips For Dressing Up Basic Outfits</h5>
+                <p class="text-muted">
+                  Fashion is not merely about clothing; it is an embodiment of
+                  elegance, sophistication, and self...
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog 2 -->
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/photo-1490481651871-ab68de25d43d.avif"
+                class="img-fluid w-100"
+                alt="Blog 2"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 7, 2025</div>
+                <h5>How To Dress For Any Season Without...</h5>
+                <p class="text-muted">
+                  Trends are patterns or shifts in behavior, preferences, or
+                  ideas that gain popularity...
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blog 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/photo-1539109136881-3be0616acf4b.avif"
+                class="img-fluid w-100"
+                alt="Blog 3"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 7, 2025</div>
+                <h5>5 Ways To Stop Closet Clutter And Find...</h5>
+                <p class="text-muted">
+                  Technology has become an integral part of our lives,
+                  revolutionizing the way we work and communicate.
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: BLOG SECTION ===== -->
+
+    <!-- ===== START: NEWSLETTER SECTION ===== -->
+    <section class="newsletter-section reveal">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4">Subscribe To Our Newsletter</h2>
+            <p class="mb-4">
+              Subscribe to our latest newsletter to get news about special
+              discounts & upcoming sales
+            </p>
+            <div class="newsletter-form">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="newsletter-input"
+                  placeholder="Your Email Address"
+                />
+                <button class="newsletter-btn glow-on-hover">SUBSCRIBE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: NEWSLETTER SECTION ===== -->
+
+    <!-- ===== START: FOOTER SECTION ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title">About Information</h5>
+            <p><i class="fas fa-store me-2"></i> Fashion Store</p>
+            <p>
+              <i class="fas fa-location-dot me-2"></i> Union Trade Ipsum Doler
+            </p>
+            <p><i class="fas fa-envelope me-2"></i> gmail@example.com</p>
+            <p><i class="fas fa-phone me-2"></i> 91 8002336671</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Your Account</h5>
+            <ul class="footer-links">
+              <li><a href="#">Search</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Delivery Information</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Our Stories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Information</h5>
+            <ul class="footer-links">
+              <li><a href="#">Size Chart</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Legal Notice</a></li>
+              <li><a href="#">Delivery</a></li>
+              <li><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Quick links</h5>
+            <ul class="footer-links">
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Refund Policy</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Policy for Buyers</a></li>
+              <li><a href="#">Policy for Sellers</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="#" class="social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-pinterest"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p class="mb-0">© 2026 Fashion Store. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== END: FOOTER SECTION ===== -->
+
+    <!-- ===== START: CART SIDEBAR ===== -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3 class="cart-title">Shopping Cart</h3>
+        <button class="close-cart" id="closeCart">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be added here dynamically -->
+        <div class="empty-cart" id="emptyCart">
+          <i class="fas fa-shopping-bag fa-3x mb-3"></i>
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0.00</span>
+        </div>
+        <div class="cart-buttons">
+          <a
+            href="./view-cart.html"
+            class="cart-btn btn-view-cart glow-on-hover"
+            >View Cart</a
+          >
+          <a href="#" class="cart-btn btn-checkout glow-on-hover">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="cartOverlay"></div>
+    <!-- ===== END: CART SIDEBAR ===== -->
+
+    <!-- ===== START: JAVASCRIPT FILES ===== -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/custom.js"></script>
+    <!-- Cart JavaScript -->
+    <script src="js/cart.js"></script>
+    <script src="js/store-api.js"></script>
+    <!-- ===== END: JAVASCRIPT FILES ===== -->
+  </body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ===== START: HEAD SECTION ===== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store - Blog</title>
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <span class="loader"></span>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <button class="scroll-to-top" id="scrollToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+    
+    <!-- ===== START: HEADER & NAVBAR SECTION ===== -->
+    <header class="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="./index.html">LOGO</a>
+
+          <!-- Mobile Toggle Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation Menu -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <!-- HOME Link -->
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">HOME</a>
+              </li>
+
+              <!-- SHOP Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="shopDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  SHOP
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./products-list.html"
+                      >Active Casual</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Featured Products</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                  <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">On Sale / Discounted</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- COLLECTIONS Link -->
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="./collections.html"
+                  >COLLECTIONS</a
+                >
+              </li>
+
+              <!-- WATCHES Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="watchesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  WATCHES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Luxury Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Sports Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Smart Watches</a></li>
+                </ul>
+              </li>
+
+              <!-- MORE Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  href="#"
+                  id="moreDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  MORE
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="./Contact.html">Contact us</a></li>
+                  <li><a class="dropdown-item active" href="./Blog.html">Blog</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Search and User Icons -->
+            <div class="d-flex align-items-center">
+              <!-- Search Box -->
+              <div class="search-box">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  id="searchInput"
+                />
+                <button type="submit" id="searchBtn" class="glow-on-hover">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+
+              <!-- Header Icons -->
+              <div class="header-icons ms-3">
+                <!-- User Icon -->
+                <a
+                  href="#"
+                  class="icon-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  <i class="far fa-user"></i>
+                </a>
+                <!-- Wishlist Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="far fa-heart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+                <!-- Cart Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span class="cart-badge">5</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ===== END: HEADER & NAVBAR SECTION ===== -->
+
+    <!-- ===== START: LOGIN/REGISTER MODAL ===== -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="auth-container">
+              <!-- Close Button -->
+              <button type="button" class="close-btn" data-bs-dismiss="modal">
+                <i class="fas fa-times"></i>
+              </button>
+              <!-- Tabs -->
+              <div class="auth-tabs mb-4">
+                <button class="auth-tab active" onclick="showTab('login')">
+                  LOGIN
+                </button>
+                <button class="auth-tab" onclick="showTab('register')">
+                  REGISTER
+                </button>
+              </div>
+
+              <!-- Login Form -->
+              <div id="loginTab" class="auth-form active">
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3 text-end">
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3 glow-on-hover">
+                    SIGN IN
+                  </button>
+
+                  <div class="divider">
+                    <span>or</span>
+                  </div>
+
+                  <button type="button" class="btn btn-google w-100 mb-3 glow-on-hover">
+                    <img
+                      src="images/Google__G__logo.svg.png"
+                      alt="Google"
+                      class="google-logo"
+                    />
+                    Continue with Google
+                  </button>
+
+                  <button type="button" class="btn btn-facebook w-100 glow-on-hover">
+                    <img
+                      src="images/2021_Facebook_icon.svg.png"
+                      alt="Facebook"
+                      class="facebook-logo"
+                    />
+                    Continue with Facebook
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    No account yet?
+                    <a
+                      href="#"
+                      class="switch-link"
+                      onclick="showTab('register')"
+                      >Create an account</a
+                    >
+                  </p>
+                </form>
+              </div>
+
+              <!-- Register Form -->
+              <div id="registerTab" class="auth-form">
+                <form id="registerForm">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First name"
+                        required
+                      />
+                    </div>
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Last name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirm password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3 glow-on-hover">
+                    CREATE ACCOUNT
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    Already have an account?
+                    <a href="#" class="switch-link" onclick="showTab('login')"
+                      >Sign in</a
+                    >
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== END: LOGIN/REGISTER MODAL ===== -->
+
+    <!-- ===== START: PAGE HEADER SECTION ===== -->
+    <div class="page-header reveal">
+      <div class="container">
+        <h1 class="page-title stagger-animate">Blog</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item stagger-animate"><a href="./index.html">Home</a></li>
+            <li class="breadcrumb-item stagger-animate"><a href="#">Blog</a></li>
+            <li class="breadcrumb-item active stagger-animate" aria-current="page">
+              All Articles
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- ===== END: PAGE HEADER SECTION ===== -->
+
+    <!-- ===== START: BLOG SECTION ===== -->
+    <section class="blog-section reveal">
+      <div class="container">
+        <div class="row g-4">
+          <!-- ===== START: BLOG 1 ===== -->
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/Blog-img-1.avif"
+                class="img-fluid w-100"
+                alt="Quick Tips For Dressing Up Basic Outfits"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 7, 2025</div>
+                <h5>Quick Tips For Dressing Up Basic Outfits</h5>
+                <p class="text-muted">
+                  Fashion is not merely about clothing; it is an embodiment of
+                  elegance, sophistication, and self...
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+          <!-- ===== END: BLOG 1 ===== -->
+
+          <!-- ===== START: BLOG 2 ===== -->
+          <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/Blog-4.avif"
+                class="img-fluid w-100"
+                alt="How To Dress For Any Season"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 7, 2025</div>
+                <h5>How To Dress For Any Season Without...</h5>
+                <p class="text-muted">
+                  Trends are patterns or shifts in behavior, preferences, or
+                  ideas that gain popularity...
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+          <!-- ===== END: BLOG 2 ===== -->
+
+          <!-- ===== START: BLOG 3 ===== -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/photo-1490481651871-ab68de25d43d.avif"
+                class="img-fluid w-100"
+                alt="5 Ways To Stop Closet Clutter"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 7, 2025</div>
+                <h5>5 Ways To Stop Closet Clutter And Find...</h5>
+                <p class="text-muted">
+                  Technology has become an integral part of our lives,
+                  revolutionizing the way we work and communicate.
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+          <!-- ===== END: BLOG 3 ===== -->
+
+          <!-- ===== START: BLOG 4 ===== -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/photo-1539109136881-3be0616acf4b.avif"
+                class="img-fluid w-100"
+                alt="Summer Fashion Trends 2025"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 12, 2025</div>
+                <h5>Top Summer Fashion Trends 2025</h5>
+                <p class="text-muted">
+                  Discover the hottest summer fashion trends that will keep you
+                  stylish and comfortable all season long.
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+          <!-- ===== END: BLOG 4 ===== -->
+
+          <!-- ===== START: BLOG 5 ===== -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/Blog-3.avif"
+                class="img-fluid w-100"
+                alt="How To Style Accessories Like A Pro"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 18, 2025</div>
+                <h5>How To Style Accessories Like A Pro</h5>
+                <p class="text-muted">
+                  Learn the art of accessorizing to elevate your outfits and
+                  make a lasting fashion statement.
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+          <!-- ===== END: BLOG 5 ===== -->
+
+          <!-- ===== START: BLOG 6 ===== -->
+          <div class="col-lg-4 col-md-6">
+            <div class="blog-card stagger-animate">
+              <img
+                src="images/Blog-img-1.avif"
+                class="img-fluid w-100"
+                alt="Sustainable Fashion"
+              />
+              <div class="p-4">
+                <div class="blog-date">JULY 24, 2025</div>
+                <h5>Sustainable Fashion: Eco-Friendly Choices</h5>
+                <p class="text-muted">
+                  Explore sustainable fashion options that are good for the
+                  environment and your personal style.
+                </p>
+                <a href="#" class="text-dark fw-bold">READ MORE →</a>
+              </div>
+            </div>
+          </div>
+          <!-- ===== END: BLOG 6 ===== -->
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: BLOG SECTION ===== -->
+
+    <!-- ===== START: NEWSLETTER SECTION ===== -->
+    <section class="newsletter-section reveal">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4 stagger-animate">Subscribe To Our Newsletter</h2>
+            <p class="mb-4 stagger-animate">
+              Subscribe to our latest newsletter to get news about special
+              discounts & upcoming sales
+            </p>
+
+            <div class="newsletter-form stagger-animate">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="newsletter-input"
+                  placeholder="Your Email Address"
+                />
+                <button class="newsletter-btn glow-on-hover">SUBSCRIBE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== END: NEWSLETTER SECTION ===== -->
+
+    <!-- ===== START: FOOTER SECTION ===== -->
+    <footer class="footer reveal">
+      <div class="container">
+        <div class="row g-4">
+          <!-- ===== START: ABOUT INFORMATION COLUMN ===== -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title stagger-animate">About Information</h5>
+            <p class="stagger-animate"><i class="fas fa-store me-2"></i> Fashion Store</p>
+            <p class="stagger-animate">
+              <i class="fas fa-location-dot me-2"></i> Union Trade Ipsum Doler
+            </p>
+            <p class="stagger-animate"><i class="fas fa-envelope me-2"></i> gmail@example.com</p>
+            <p class="stagger-animate"><i class="fas fa-phone me-2"></i> 91 8002336671</p>
+          </div>
+          <!-- ===== END: ABOUT INFORMATION COLUMN ===== -->
+
+          <!-- ===== START: YOUR ACCOUNT COLUMN ===== -->
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Your Account</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Search</a></li>
+              <li class="stagger-animate"><a href="#">About Us</a></li>
+              <li class="stagger-animate"><a href="#">Delivery Information</a></li>
+              <li class="stagger-animate"><a href="#">Contact</a></li>
+              <li class="stagger-animate"><a href="#">Our Stories</a></li>
+            </ul>
+          </div>
+          <!-- ===== END: YOUR ACCOUNT COLUMN ===== -->
+
+          <!-- ===== START: INFORMATION COLUMN ===== -->
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Information</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Size Chart</a></li>
+              <li class="stagger-animate"><a href="#">Shipping</a></li>
+              <li class="stagger-animate"><a href="#">Legal Notice</a></li>
+              <li class="stagger-animate"><a href="#">Delivery</a></li>
+              <li class="stagger-animate"><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+          <!-- ===== END: INFORMATION COLUMN ===== -->
+
+          <!-- ===== START: QUICK LINKS COLUMN ===== -->
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Quick links</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Privacy Policy</a></li>
+              <li class="stagger-animate"><a href="#">Refund Policy</a></li>
+              <li class="stagger-animate"><a href="#">Shipping Policy</a></li>
+              <li class="stagger-animate"><a href="#">Terms of Service</a></li>
+              <li class="stagger-animate"><a href="#">Policy for Buyers</a></li>
+              <li class="stagger-animate"><a href="#">Policy for Sellers</a></li>
+            </ul>
+          </div>
+          <!-- ===== END: QUICK LINKS COLUMN ===== -->
+
+          <!-- ===== START: FOLLOW US COLUMN ===== -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title stagger-animate">Follow Us</h5>
+            <div class="social-icons">
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-pinterest"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+          <!-- ===== END: FOLLOW US COLUMN ===== -->
+        </div>
+
+        <div class="copyright stagger-animate">
+          <p class="mb-0">© 2026 Fashion Store. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== END: FOOTER SECTION ===== -->
+
+    <!-- ===== START: CART SIDEBAR ===== -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3 class="cart-title">Shopping Cart</h3>
+        <button class="close-cart" id="closeCart">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be added here dynamically -->
+        <div class="empty-cart" id="emptyCart">
+          <i class="fas fa-shopping-bag fa-3x mb-3"></i>
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0.00</span>
+        </div>
+        <div class="cart-buttons">
+          <a href="./view-cart.html" class="cart-btn btn-view-cart glow-on-hover"
+            >View Cart</a
+          >
+          <a href="#" class="cart-btn btn-checkout glow-on-hover">Checkout</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="cartOverlay"></div>
+    <!-- ===== END: CART SIDEBAR ===== -->
+
+    <!-- ===== START: JAVASCRIPT FILES ===== -->
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/custom.js"></script>
+    <!-- Cart JavaScript -->
+    <script src="js/cart.js"></script>
+  </body>
+</html>

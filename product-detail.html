@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store - Product Detail</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Jost:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <span class="loader"></span>
+    </div>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-indicator" id="scrollIndicator">
+      <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+    <!-- ==== HEADER START === -->
+    <header class="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="./index.html">LOGO</a>
+
+          <!-- Mobile Toggle Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation Menu -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <!-- HOME Link -->
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">HOME</a>
+              </li>
+
+              <!-- SHOP Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="shopDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  SHOP
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./products-list.html"
+                      >Active Casual</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Featured Products</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                  <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">On Sale / Discounted</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- COLLECTIONS Link -->
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="./collections.html"
+                  >COLLECTIONS</a
+                >
+              </li>
+
+              <!-- WATCHES Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="watchesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  WATCHES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Luxury Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Sports Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Smart Watches</a></li>
+                </ul>
+              </li>
+
+              <!-- MORE Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="moreDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  MORE
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./Contact.html"
+                      >Contact us</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="./Blog.html">Blog</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Search and User Icons -->
+            <div class="d-flex align-items-center">
+              <!-- Search Box -->
+              <div class="search-box">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  id="searchInput"
+                />
+                <button type="submit" id="searchBtn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+
+              <!-- Header Icons -->
+              <div class="header-icons ms-3">
+                <!-- User Icon -->
+                <a
+                  href="#"
+                  class="icon-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  <i class="far fa-user"></i>
+                </a>
+                <!-- Wishlist Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="far fa-heart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+                <!-- Cart Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span class="cart-badge">5</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ==== HEADER END ==== -->
+    <!-- Login/Register Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="auth-container">
+              <!-- Close Button -->
+              <button type="button" class="close-btn" data-bs-dismiss="modal">
+                <i class="fas fa-times"></i>
+              </button>
+              <!-- Tabs -->
+              <div class="auth-tabs mb-4">
+                <button class="auth-tab active" onclick="showTab('login')">
+                  LOGIN
+                </button>
+                <button class="auth-tab" onclick="showTab('register')">
+                  REGISTER
+                </button>
+              </div>
+
+              <!-- Login Form -->
+              <div id="loginTab" class="auth-form active">
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3 text-end">
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3 glow-on-hover">
+                    SIGN IN
+                  </button>
+
+                  <div class="divider">
+                    <span>or</span>
+                  </div>
+
+                  <button type="button" class="btn btn-google w-100 mb-3 glow-on-hover">
+                    <img
+                      src="images/Google__G__logo.svg.png"
+                      alt="Google"
+                      class="google-logo"
+                    />
+                    Continue with Google
+                  </button>
+
+                  <button type="button" class="btn btn-facebook w-100 glow-on-hover">
+                    <img
+                      src="images/2021_Facebook_icon.svg.png"
+                      alt="Facebook"
+                      class="facebook-logo"
+                    />
+                    Continue with Facebook
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    No account yet?
+                    <a
+                      href="#"
+                      class="switch-link"
+                      onclick="showTab('register')"
+                      >Create an account</a
+                    >
+                  </p>
+                </form>
+              </div>
+
+              <!-- Register Form -->
+              <div id="registerTab" class="auth-form">
+                <form id="registerForm">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First name"
+                        required
+                      />
+                    </div>
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Last name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirm password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3 glow-on-hover">
+                    CREATE ACCOUNT
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    Already have an account?
+                    <a href="#" class="switch-link" onclick="showTab('login')"
+                      >Sign in</a
+                    >
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ==== LOGIN/REGISTER END ==== -->
+    <!-- Product Detail Section -->
+    <section class="product-detail reveal">
+      <div class="container">
+        <div class="row">
+          <!-- Product Images -->
+          <div class="col-lg-6">
+            <div class="product-images">
+              <!-- Product Image Slider -->
+              <div class="product-slider-container">
+                <div class="product-slider">
+                  <!-- Slide 1 -->
+                  <div class="product-slide active stagger-animate">
+                    <img
+                      src="images/02_1990382d-0957-4f77-8dce-c875a4bdb6b4.webp"
+                      alt="DL Woman Regular Fit Solid Cut Away Collar Casual Shirt"
+                    />
+                  </div>
+
+                  <!-- Slide 2 -->
+                  <div class="product-slide stagger-animate">
+                    <img
+                      src="images/photo-1586790170083-2f9ceadc732d.avif"
+                      alt="Product View 2"
+                    />
+                  </div>
+
+                  <!-- Slide 3 -->
+                  <div class="product-slide stagger-animate">
+                    <img
+                      src="images/photo-1582418702059-97ebafb35d09.avif"
+                      alt="Product View 3"
+                    />
+                  </div>
+
+                  <!-- Slide 4 -->
+                  <div class="product-slide stagger-animate">
+                    <img
+                      src="images/photo-1582418702059-97ebafb35d09.avif"
+                      alt="Product View 4"
+                    />
+                  </div>
+
+                  <!-- Navigation Arrows -->
+                  <button class="product-slider-nav product-slider-prev">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="product-slider-nav product-slider-next">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+
+                  <!-- Dots -->
+                  <div class="product-slider-controls">
+                    <button
+                      class="product-slider-dot active"
+                      data-index="0"
+                    ></button>
+                    <button class="product-slider-dot" data-index="1"></button>
+                    <button class="product-slider-dot" data-index="2"></button>
+                    <button class="product-slider-dot" data-index="3"></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Thumbnails -->
+              <div class="product-thumbnails">
+                <img
+                  src="images/02_1990382d-0957-4f77-8dce-c875a4bdb6b4.webp"
+                  alt="Product Thumbnail 1"
+                  class="thumbnail active"
+                  data-index="0"
+                />
+                <img
+                  src="images/photo-1582418702059-97ebafb35d09.avif"
+                  alt="Product Thumbnail 2"
+                  class="thumbnail"
+                  data-index="1"
+                />
+                <img
+                  src="images/photo-1582418702059-97ebafb35d09.avif"
+                  alt="Product Thumbnail 3"
+                  class="thumbnail"
+                  data-index="2"
+                />
+                <img
+                  src="images/photo-1582418702059-97ebafb35d09.avif"
+                  alt="Product Thumbnail 4"
+                  class="thumbnail"
+                  data-index="3"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Info -->
+          <div class="col-lg-6">
+            <div class="product-info">
+              <h1 class="stagger-animate">DL Woman Regular Fit Solid Cut Away Collar Casual Shirt</h1>
+
+              <div class="product-rating stagger-animate">
+                <div class="rating-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span class="rating-count">(4.5/5) 128 Reviews</span>
+              </div>
+
+              <div class="product-price stagger-animate">
+                <span class="current-price">$50.00</span>
+                <span class="original-price">$60.00</span>
+                <span class="discount-badge">Save $10</span>
+              </div>
+
+              <p class="product-description stagger-animate">
+                A habit is a garment which amalgamates contemporary fashion with
+                your unique style manners. This habit has been designed keeping
+                in mind the latest trends in casual fashion, making you stand
+                out where you wear it. Pair this habit with your favorite denim,
+                pants or chinos for a stylish look for any event, such as a
+                party or an evening with friends.
+              </p>
+
+              <!-- Color Options -->
+              <div class="color-options stagger-animate">
+                <h6 class="color-title">Color:</h6>
+                <div class="color-list">
+                  <div
+                    class="color-option active"
+                    style="background-color: #1a1a1a"
+                    title="Black"
+                    onclick="selectColor(this)"
+                  ></div>
+                  <div
+                    class="color-option"
+                    style="background-color: #f0f0f0"
+                    title="White"
+                    onclick="selectColor(this)"
+                  ></div>
+                  <div
+                    class="color-option"
+                    style="background-color: #8b4513"
+                    title="Brown"
+                    onclick="selectColor(this)"
+                  ></div>
+                  <div
+                    class="color-option"
+                    style="background-color: #4682b4"
+                    title="Blue"
+                    onclick="selectColor(this)"
+                  ></div>
+                </div>
+              </div>
+
+              <div id="storeSizeOptions" class="store-size-options stagger-animate"></div>
+
+              <!-- Quantity Selector -->
+              <div class="quantity-selector stagger-animate">
+                <span class="quantity-title">Quantity:</span>
+                <div class="quantity-control">
+                  <button class="quantity-btn" onclick="decreaseQuantity()">
+                    -
+                  </button>
+                  <input
+                    type="text"
+                    class="quantity-input"
+                    value="1"
+                    id="quantity"
+                  />
+                  <button class="quantity-btn" onclick="increaseQuantity()">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="action-buttons stagger-animate">
+                <button
+                  class="slide-btn glow-on-hover"
+                  type="button"
+                  onclick="event.preventDefault(); addToCart(1);"
+                >
+                  <i class="fas fa-shopping-cart"></i> ADD TO CART
+                </button>
+                <button class="tab-btn glow-on-hover">
+                  <i class="fas fa-bolt"></i> BUY IT NOW
+                </button>
+              </div>
+
+              <!-- Additional Info -->
+              <div class="additional-info stagger-animate">
+                <p>
+                  <i class="fas fa-truck text-secondary me-2"></i> Free shipping
+                  on orders over $50
+                </p>
+                <p>
+                  <i class="fas fa-undo text-secondary me-2"></i> 30-day return
+                  policy
+                </p>
+                <p>
+                  <i class="fas fa-shield-alt text-secondary me-2"></i> Secure
+                  payment with SSL encryption
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Tabs -->
+        <div class="product-tabs stagger-animate">
+          <ul class="nav nav-tabs" id="productTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active glow-on-hover"
+                id="description-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#description"
+                type="button"
+              >
+                Description
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="productTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="description"
+              role="tabpanel"
+            >
+              <h4>About this item</h4>
+              <p>
+                A habit is a garment which amalgamates contemporary fashion with
+                your unique style manners. This habit has been designed keeping
+                in mind the latest trends in casual fashion, making you stand
+                out where you wear it. Pair this habit with your favorite denim,
+                pants or chinos for a stylish look for any event, such as a
+                party or an evening with friends.
+              </p>
+
+              <h5>Half Sleeves</h5>
+              <ul>
+                <li>
+                  Half sleeve design is great for summer and casual wear. It's
+                  quick and easy to put on and go to style.
+                </li>
+                <li>
+                  Simple and casual habit designs use of the most purchasable
+                  product by the customer.
+                </li>
+              </ul>
+
+              <h5>Cotton Fabric</h5>
+              <ul>
+                <li>
+                  Lightweight, but very comfortable cotton material, super soft,
+                  but not heavy and still so fashionable doesn't look bulky.
+                  Perfect for summer season & light winter season.
+                </li>
+                <li>It's a great choice for your wardrobe collection.</li>
+              </ul>
+
+              <h5>Round Neck</h5>
+              <ul>
+                <li>
+                  This is round neck striped half sleeve fabric. Round neck
+                  fabric can never go wrong. This makes you look more stylish
+                  and a little pretty.
+                </li>
+                <li>
+                  This is striped design which gives you perfect and stylish
+                  look whenever you wear it.
+                </li>
+              </ul>
+
+              <p>
+                <strong>Care Instructions:</strong> Wash with mild detergents.
+                Use a washing machine if required. Do not wring or tear along
+                the price, if any. Tumble dry. Dry in shade and keep away from
+                direct sunlight and high temperature to retain fabric shine.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Trending Products Section -->
+    <section class="trending-section reveal">
+      <div class="container">
+        <h2 class="section-title stagger-animate">You May Also Like</h2>
+        <div class="row g-4">
+          <!-- Product 1 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <a href="./product-detail.html" style="text-decoration: none">
+              <div class="product-card stagger-animate" data-tab="new">
+                <span class="product-badge">NEW</span>
+                <div class="side-buttons">
+                  <a href="#" class="side-button wishlist-icon">
+                    <i class="fa-regular fa-heart"></i>
+                  </a>
+                </div>
+                <img
+                  src="images/category-1.webp"
+                  class="product-image"
+                  alt="PUMA Sandal"
+                />
+                <div class="product-info">
+                  <h6 class="product-title">
+                    PUMA Lizoleor Slip On Block Sandal Women Pointed Toe
+                  </h6>
+                  <div class="product-price">
+                    $12.00 <span class="old-price">$14.00</span>
+                  </div>
+                  <button class="add-to-cart-btn glow-on-hover">Add to Cart</button>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="product-card stagger-animate" data-tab="new">
+              <span class="product-badge">NEW</span>
+              <div class="side-buttons">
+                <a href="#" class="side-button wishlist-icon">
+                  <i class="fa-regular fa-heart"></i>
+                </a>
+              </div>
+              <img
+                src="images/photo-1576566588028-4147f3842f27.avif"
+                class="product-image"
+                alt="WRANGLER"
+              />
+              <div class="product-info">
+                <h6 class="product-title">
+                  WRANGLER NOTWILD Beanies for Boys and Girls Double Layer
+                </h6>
+                <div class="product-price">$34.00</div>
+                <button class="add-to-cart-btn glow-on-hover">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="product-card stagger-animate" data-tab="new">
+              <div class="side-buttons">
+                <a href="#" class="side-button wishlist-icon">
+                  <i class="fa-regular fa-heart"></i>
+                </a>
+              </div>
+              <img
+                src="images/photo-1529374255404-311a2a4f1fd9.avif"
+                class="product-image"
+                alt="LIVERPOOL"
+              />
+              <div class="product-info">
+                <h6 class="product-title">
+                  LIVERPOOL Emporio Armani Men's Grey Box Multi Logo Sweatshirt
+                </h6>
+                <div class="product-price">$89.00</div>
+                <button class="add-to-cart-btn glow-on-hover">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div class="product-card stagger-animate" data-tab="new">
+              <span class="product-badge">SALE</span>
+              <div class="side-buttons">
+                <a href="#" class="side-button wishlist-icon">
+                  <i class="fa-regular fa-heart"></i>
+                </a>
+              </div>
+              <img
+                src="images/photo-1541099649105-f69ad21f3246.avif"
+                class="product-image"
+                alt="Levi's"
+              />
+              <div class="product-info">
+                <h6 class="product-title">
+                  Levi's LookbookStore Women's Distressed Jeans Ripped Denim
+                  Shorts
+                </h6>
+                <div class="product-price">$25.00</div>
+                <button class="add-to-cart-btn glow-on-hover">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials Section -->
+    <!-- Newsletter -->
+    <section class="newsletter-section reveal">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4 stagger-animate">Subscribe To Our Newsletter</h2>
+            <p class="mb-4 stagger-animate">
+              Subscribe to our latest newsletter to get news about special
+              discounts & upcoming sales
+            </p>
+
+            <div class="newsletter-form stagger-animate">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="newsletter-input"
+                  placeholder="Your Email Address"
+                />
+                <button class="newsletter-btn glow-on-hover">SUBSCRIBE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter end -->
+    <!-- Footer -->
+    <footer class="footer reveal">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title stagger-animate">About Information</h5>
+            <p class="stagger-animate"><i class="fas fa-store me-2"></i> Fashion Store</p>
+            <p class="stagger-animate">
+              <i class="fas fa-location-dot me-2"></i> Union Trade Ipsum Doler
+            </p>
+            <p class="stagger-animate"><i class="fas fa-envelope me-2"></i> gmail@example.com</p>
+            <p class="stagger-animate"><i class="fas fa-phone me-2"></i> 91 8002336671</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Your Account</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Search</a></li>
+              <li class="stagger-animate"><a href="#">About Us</a></li>
+              <li class="stagger-animate"><a href="#">Delivery Information</a></li>
+              <li class="stagger-animate"><a href="#">Contact</a></li>
+              <li class="stagger-animate"><a href="#">Our Stories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Information</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Size Chart</a></li>
+              <li class="stagger-animate"><a href="#">Shipping</a></li>
+              <li class="stagger-animate"><a href="#">Legal Notice</a></li>
+              <li class="stagger-animate"><a href="#">Delivery</a></li>
+              <li class="stagger-animate"><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Quick links</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Privacy Policy</a></li>
+              <li class="stagger-animate"><a href="#">Refund Policy</a></li>
+              <li class="stagger-animate"><a href="#">Shipping Policy</a></li>
+              <li class="stagger-animate"><a href="#">Terms of Service</a></li>
+              <li class="stagger-animate"><a href="#">Policy for Buyers</a></li>
+              <li class="stagger-animate"><a href="#">Policy for Sellers</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title stagger-animate">Follow Us</h5>
+            <div class="social-icons">
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-pinterest"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright stagger-animate">
+          <p class="mb-0">© 2026 Fashion Store. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer end -->
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3 class="cart-title">Shopping Cart</h3>
+        <button class="close-cart" id="closeCart">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be added here dynamically -->
+        <div class="empty-cart" id="emptyCart">
+          <i class="fas fa-shopping-bag fa-3x mb-3"></i>
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0.00</span>
+        </div>
+        <div class="cart-buttons">
+          <a href="./view-cart.html" class="cart-btn btn-view-cart glow-on-hover"
+            >View Cart</a
+          >
+          <a href="#" class="cart-btn btn-checkout glow-on-hover">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <!-- Cart Sidebar end -->
+    <!-- Cart Overlay -->
+    <div class="overlay" id="cartOverlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+   <script src="js/custom.js"></script> 
+    <script src="js/cart.js"></script>
+    <script src="js/store-api.js"></script>
+  </body>
+</html>

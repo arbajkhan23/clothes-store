@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store - Cart</title>
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+      <span class="loader"></span>
+    </div>
+    
+    <!-- Scroll to Top Button -->
+    <div class="scroll-indicator" id="scrollIndicator">
+      <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+    
+    <!-- ===== START: HEADER & NAVBAR SECTION ===== -->
+    <header class="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="./index.html">LOGO</a>
+
+          <!-- Mobile Toggle Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation Menu -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <!-- HOME Link -->
+              <li class="nav-item">
+                <a class="nav-link" href="./index.html">HOME</a>
+              </li>
+
+              <!-- SHOP Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="shopDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  SHOP
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./products-list.html"
+                      >Active Casual</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Featured Products</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                  <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">On Sale / Discounted</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- COLLECTIONS Link -->
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="./collections.html"
+                  >COLLECTIONS</a
+                >
+              </li>
+
+              <!-- WATCHES Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="watchesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  WATCHES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Luxury Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Sports Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Smart Watches</a></li>
+                </ul>
+              </li>
+
+              <!-- MORE Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="moreDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  MORE
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./Contact.html"
+                      >Contact us</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="./Blog.html">Blog</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Search and User Icons -->
+            <div class="d-flex align-items-center">
+              <!-- Search Box -->
+              <div class="search-box">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  id="searchInput"
+                />
+                <button type="submit" id="searchBtn" class="glow-on-hover">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+
+              <!-- Header Icons -->
+              <div class="header-icons ms-3">
+                <!-- User Icon -->
+                <a
+                  href="#"
+                  class="icon-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  <i class="far fa-user"></i>
+                </a>
+                <!-- Wishlist Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="far fa-heart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+                <!-- Cart Icon -->
+                <a href="#" class="icon-btn active">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span class="cart-badge">2</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ===== END: HEADER & NAVBAR SECTION ===== -->
+    
+    <!-- Login/Register Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="auth-container">
+              <!-- Close Button -->
+              <button type="button" class="close-btn" data-bs-dismiss="modal">
+                <i class="fas fa-times"></i>
+              </button>
+              <!-- Tabs -->
+              <div class="auth-tabs mb-4">
+                <button class="auth-tab active" onclick="showTab('login')">
+                  LOGIN
+                </button>
+                <button class="auth-tab" onclick="showTab('register')">
+                  REGISTER
+                </button>
+              </div>
+
+              <!-- Login Form -->
+              <div id="loginTab" class="auth-form active">
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3 text-end">
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3 glow-on-hover">
+                    SIGN IN
+                  </button>
+
+                  <div class="divider">
+                    <span>or</span>
+                  </div>
+
+                  <button type="button" class="btn btn-google w-100 mb-3 glow-on-hover">
+                    <img
+                      src="images/Google__G__logo.svg.png"
+                      alt="Google"
+                      class="google-logo"
+                    />
+                    Continue with Google
+                  </button>
+
+                  <button type="button" class="btn btn-facebook w-100 glow-on-hover">
+                    <img
+                      src="images/2021_Facebook_icon.svg.png"
+                      alt="Facebook"
+                      class="facebook-logo"
+                    />
+                    Continue with Facebook
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    No account yet?
+                    <a
+                      href="#"
+                      class="switch-link"
+                      onclick="showTab('register')"
+                      >Create an account</a
+                    >
+                  </p>
+                </form>
+              </div>
+
+              <!-- Register Form -->
+              <div id="registerTab" class="auth-form">
+                <form id="registerForm">
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First name"
+                        required
+                      />
+                    </div>
+                    <div class="col-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Last name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div class="mb-4">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Confirm password"
+                      required
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-dark w-100 mb-3 glow-on-hover">
+                    CREATE ACCOUNT
+                  </button>
+
+                  <p class="text-center mt-4 mb-0">
+                    Already have an account?
+                    <a href="#" class="switch-link" onclick="showTab('login')"
+                      >Sign in</a
+                    >
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header reveal" style="margin-bottom: 16px">
+      <div class="container">
+        <h1 class="page-title stagger-animate">Your Shopping Cart</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item stagger-animate"><a href="./index.html">Home</a></li>
+            <li class="breadcrumb-item active stagger-animate" aria-current="page">
+              Shopping Cart
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Page Header end -->
+
+    <!-- Main Content -->
+    <main class="container reveal">
+      <div class="cart-container">
+        <!-- Cart Items -->
+        <div class="cart-items">
+          <h2 class="cart-title stagger-animate">
+            Your Shopping Cart (<span class="cart-count">2</span> items)
+          </h2>
+
+          <!-- Item 1 -->
+          <div class="cart-item stagger-animate">
+            <div class="item-image">
+              <img
+                src="images/photo-1596755094514-f87e34085b2c.avif"
+                alt="Puma Shirt"
+              />
+            </div>
+            <div class="item-details">
+              <h3>
+                PUMA Bubbleroom KNOT L/S Viscose Shirt Button-Down Blouse -
+                Light Blue
+              </h3>
+              <p>Size: M, Color: Light Blue</p>
+              <div class="item-price">$25.00</div>
+              <div class="item-quantity">
+                <span class="quantity-btn minus">-</span>
+                <input type="text" class="quantity-input" value="1" />
+                <span class="quantity-btn plus">+</span>
+              </div>
+            </div>
+            <button class="item-remove glow-on-hover">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="cart-item stagger-animate">
+            <div class="item-image">
+              <img
+                src="images/photo-1526170375885-4d8ecf77b99f.avif"
+                alt="Gold Watch"
+              />
+            </div>
+            <div class="item-details">
+              <h3>Gold Cut Away Leather Strap Watch</h3>
+              <p>Style: Classic, Color: Gold</p>
+              <div class="item-price">$50.00</div>
+              <div class="item-quantity">
+                <span class="quantity-btn minus">-</span>
+                <input type="text" class="quantity-input" value="1" />
+                <span class="quantity-btn plus">+</span>
+              </div>
+            </div>
+            <button class="item-remove glow-on-hover">
+              <i class="fas fa-trash"></i> Remove
+            </button>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary stagger-animate">
+          <h3 class="summary-title">Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span class="subtotal">$75.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="summary-row">
+            <span>Taxes</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span class="total-price">$75.00 USD</span>
+          </div>
+
+          <button class="checkout-btn glow-on-hover">
+            <i class="fas fa-lock"></i> PROCEED TO CHECKOUT
+          </button>
+
+          <a href="./products-list.html" class="continue-shopping">
+            <i class="fas fa-arrow-left"></i> Continue Shopping
+          </a>
+        </div>
+      </div>
+    </main>
+    <!-- Main Content end -->
+
+    <dialog class="checkout-dialog" id="checkoutDialog" aria-labelledby="checkoutTitle">
+      <div class="checkout-dialog-header">
+        <div>
+          <p class="checkout-eyebrow">SECURE CHECKOUT</p>
+          <h2 id="checkoutTitle">Delivery details</h2>
+        </div>
+        <button class="checkout-close" type="button" data-checkout-close aria-label="Close checkout">&times;</button>
+      </div>
+      <form class="checkout-form" id="checkoutForm">
+        <p class="checkout-error" id="checkoutError" role="alert" hidden></p>
+        <fieldset class="checkout-coupon">
+          <legend>Discount code</legend>
+          <div class="checkout-coupon-controls">
+            <input id="checkoutCouponCode" name="couponCode" type="text" autocomplete="off" maxlength="40" placeholder="Enter a code" />
+            <button class="checkout-coupon-apply" id="applyCouponButton" type="button">Apply</button>
+          </div>
+          <p class="checkout-coupon-feedback" id="checkoutCouponFeedback" role="status" aria-live="polite"></p>
+        </fieldset>
+        <fieldset>
+          <legend>Contact information</legend>
+          <label>Name<input name="customerName" type="text" autocomplete="name" maxlength="120" required /></label>
+          <label>Email<input name="customerEmail" type="email" autocomplete="email" maxlength="254" required /></label>
+          <label>Phone<input name="customerPhone" type="tel" autocomplete="tel" maxlength="30" required /></label>
+        </fieldset>
+        <fieldset>
+          <legend>Shipping address</legend>
+          <label>Address line 1<input name="line1" type="text" autocomplete="address-line1" maxlength="200" required /></label>
+          <label>Address line 2 <span>(optional)</span><input name="line2" type="text" autocomplete="address-line2" maxlength="200" /></label>
+          <div class="checkout-fields-row">
+            <label>City<input name="city" type="text" autocomplete="address-level2" maxlength="100" required /></label>
+            <label>State / region<input name="region" type="text" autocomplete="address-level1" maxlength="100" required /></label>
+          </div>
+          <div class="checkout-fields-row">
+            <label>Postal code<input name="postalCode" type="text" autocomplete="postal-code" maxlength="30" required /></label>
+            <label>Country<input name="country" type="text" autocomplete="country-name" maxlength="100" required /></label>
+          </div>
+        </fieldset>
+        <div class="checkout-dialog-actions">
+          <button class="checkout-cancel" type="button" data-checkout-close>Back to cart</button>
+          <button class="checkout-submit" id="placeOrderButton" type="submit">Place order</button>
+        </div>
+      </form>
+      <section class="checkout-confirmation" id="checkoutConfirmation" aria-live="polite" hidden>
+        <span class="checkout-confirmation-icon"><i class="fas fa-check"></i></span>
+        <p class="checkout-eyebrow">ORDER CONFIRMED</p>
+        <h2>Thank you for your order.</h2>
+        <p>Your order <strong id="checkoutOrderNumber"></strong> has been received.</p>
+        <p class="checkout-confirmation-total">Order total <strong id="checkoutOrderTotal"></strong></p>
+        <button class="checkout-submit" id="checkoutConfirmationClose" type="button">Continue shopping</button>
+      </section>
+    </dialog>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section reveal">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4 stagger-animate">Subscribe To Our Newsletter</h2>
+            <p class="mb-4 stagger-animate">
+              Subscribe to our latest newsletter to get news about special
+              discounts & upcoming sales
+            </p>
+
+            <div class="newsletter-form stagger-animate">
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="newsletter-input"
+                  placeholder="Your Email Address"
+                />
+                <button class="newsletter-btn glow-on-hover">SUBSCRIBE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Newsletter end-->
+
+    <!-- Footer -->
+    <footer class="footer reveal">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title stagger-animate">About Information</h5>
+            <p class="stagger-animate"><i class="fas fa-store me-2"></i> Fashion Store</p>
+            <p class="stagger-animate">
+              <i class="fas fa-location-dot me-2"></i> Union Trade Ipsum Doler
+            </p>
+            <p class="stagger-animate"><i class="fas fa-envelope me-2"></i> gmail@example.com</p>
+            <p class="stagger-animate"><i class="fas fa-phone me-2"></i> 91 8002336671</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Your Account</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Search</a></li>
+              <li class="stagger-animate"><a href="#">About Us</a></li>
+              <li class="stagger-animate"><a href="#">Delivery Information</a></li>
+              <li class="stagger-animate"><a href="#">Contact</a></li>
+              <li class="stagger-animate"><a href="#">Our Stories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Information</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Size Chart</a></li>
+              <li class="stagger-animate"><a href="#">Shipping</a></li>
+              <li class="stagger-animate"><a href="#">Legal Notice</a></li>
+              <li class="stagger-animate"><a href="#">Delivery</a></li>
+              <li class="stagger-animate"><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title stagger-animate">Quick links</h5>
+            <ul class="footer-links">
+              <li class="stagger-animate"><a href="#">Privacy Policy</a></li>
+              <li class="stagger-animate"><a href="#">Refund Policy</a></li>
+              <li class="stagger-animate"><a href="#">Shipping Policy</a></li>
+              <li class="stagger-animate"><a href="#">Terms of Service</a></li>
+              <li class="stagger-animate"><a href="#">Policy for Buyers</a></li>
+              <li class="stagger-animate"><a href="#">Policy for Sellers</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title stagger-animate">Follow Us</h5>
+            <div class="social-icons">
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-pinterest"></i></a>
+              <a href="#" class="social-icon stagger-animate"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright stagger-animate">
+          <p class="mb-0">© 2025 Fashion Store. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer end-->
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3 class="cart-title">Shopping Cart</h3>
+        <button class="close-cart" id="closeCart">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be added here dynamically -->
+        <div class="empty-cart" id="emptyCart">
+          <i class="fas fa-shopping-bag fa-3x mb-3"></i>
+          <p>Your cart is empty</p>
+        </div>
+      </div>
+
+      <div class="cart-footer" id="cartFooter" style="display: none">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cartTotalPrice">$0.00</span>
+        </div>
+        <div class="cart-buttons">
+          <a href="./view-cart.html" class="cart-btn btn-view-cart glow-on-hover"
+            >View Cart</a
+          >
+          <a href="#" class="cart-btn btn-checkout glow-on-hover">Checkout</a>
+        </div>
+      </div>
+    </div>
+    <!-- Cart Sidebar end-->
+
+    <!-- Overlay for cart sidebar -->
+    <div class="overlay" id="cartOverlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="js/custom.js"></script>
+   <script src="js/cart.js"></script>
