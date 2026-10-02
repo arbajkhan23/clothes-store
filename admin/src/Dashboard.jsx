@@ -16,6 +16,9 @@ import {
   CartesianGrid,
   ComposedChart,
   Bar,
+  Cell,
+  Pie,
+  PieChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -128,7 +131,28 @@ export function Dashboard() {
   const recentOrders = Array.isArray(data.recentOrders)
     ? data.recentOrders
     : [];
+  // Optional dashboard collections; the page remains usable if the API
+  // does not yet return these fields.
+  const categorySales = Array.isArray(data.salesByCategory)
+    ? data.salesByCategory
+    : Array.isArray(data.categorySales)
+      ? data.categorySales
+      : [];
+  const topProducts = Array.isArray(data.topProducts)
+    ? data.topProducts
+    : Array.isArray(data.topSellingProducts)
+      ? data.topSellingProducts
+      : [];
+  const trendingProducts = Array.isArray(data.trendingProducts)
+    ? data.trendingProducts
+    : [];
 
+  const categoryColors = ['#467763', '#e5b767', '#8aa99a', '#c58b74', '#9aa5a1', '#6b8790'];
+  const categoryChartData = categorySales.map((item) => ({
+    ...item,
+    name: item.name || item.category || 'Category',
+    revenue: Number(item.revenue || item.sales || 0),
+  }));
   const values = activity.map((entry) => ({
     ...entry,
     revenue: Number(entry.revenue || 0),
@@ -401,6 +425,158 @@ export function Dashboard() {
             <ArrowRight size={15} />
           </Link>
         </article>
+      </section>
+
+      {/* Category sales, top sellers and trending products */}
+      <section className="overview-grid dashboard-detail-grid">
+        <article className="panel chart-panel category-panel">
+          <div className="panel-heading">
+            <div>
+              <p className="eyebrow">PRODUCT MIX</p>
+              <h2>Sales by category</h2>
+            </div>
+          </div>
+          {categorySales.length ? (
+            <div className="category-chart-layout">
+              <div className="category-chart">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={categorySales}
+                      dataKey="revenue"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      innerRadius="58%"
+                      outerRadius="82%"
+                      paddingAngle={3}
+                    >
+                      {categorySales.map((item, index) => (
+                        <Cell
+                          key={`${item.name || 'category'}-${index}`}
+                          fill={categoryColors[index % categoryColors.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      formatter={(value) => money(Number(value || 0))}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="category-legend">
+                {categorySales.map((item, index) => (
+                  <div className="category-legend-row" key={`${item.name || 'category'}-${index}`}>
+                    <span
+                      className="category-legend-dot"
+                      style={{ backgroundColor: categoryColors[index % categoryColors.length] }}
+                    />
+                    <span className="category-legend-name">{item.name}</span>
+                    <strong>{money(Number(item.revenue || 0))}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="empty-state">
+              <Boxes size={22} />
+              <strong>No category sales data</strong>
+              <span>Category breakdown will appear when the API provides salesByCategory.</span>
+            </div>
+          )}
+        </article>
+
+        <article className="panel recent-panel top-products-panel">
+          <div className="panel-heading">
+            <div>
+              <p className="eyebrow">BEST PERFORMERS</p>
+              <h2>Top selling products</h2>
+            </div>
+            <Link className="subtle-link" to="/products">
+              View products <ArrowRight size={15} />
+            </Link>
+          </div>
+          {topProducts.length ? (
+            <div className="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>PRODUCT</th>
+                    <th>UNITS SOLD</th>
+                    <th className="align-right">REVENUE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topProducts.slice(0, 5).map((product, index) => (
+                    <tr key={product._id || product.id || product.name || index}>
+                      <td>
+                        <strong className="table-primary">
+                          {product.name || product.title || 'Product'}
+                        </strong>
+                        {product.sku ? <small className="table-secondary">{product.sku}</small> : null}
+                      </td>
+                      <td>{Number(product.unitsSold || product.quantitySold || product.sold || 0).toLocaleString()}</td>
+                      <td className="align-right table-primary">
+                        {money(Number(product.revenue || product.totalRevenue || 0))}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="empty-state">
+              <ShoppingBag size={22} />
+              <strong>No product sales data</strong>
+              <span>Top sellers will appear when the API provides topProducts.</span>
+            </div>
+          )}
+        </article>
+      </section>
+
+      <section className="panel trending-panel">
+        <div className="panel-heading">
+          <div>
+            <p className="eyebrow">STORE PICKS</p>
+            <h2>Trending now</h2>
+          </div>
+          <Link className="subtle-link" to="/products">
+            Manage products <ArrowRight size={15} />
+          </Link>
+        </div>
+        {trendingProducts.length ? (
+          <div className="trending-products-grid">
+            {trendingProducts.slice(0, 4).map((product, index) => (
+              <article className="trending-product" key={product._id || product.id || product.name || index}>
+                {product.image || product.imageUrl || product.thumbnail ? (
+                  <img
+                    className="trending-product-image"
+                    src={product.image || product.imageUrl || product.thumbnail}
+                    alt={product.name || product.title || 'Product'}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="trending-product-placeholder">
+                    <Package size={24} />
+                  </div>
+                )}
+                <div className="trending-product-info">
+                  <strong>{product.name || product.title || 'Product'}</strong>
+                  <span>{money(Number(product.price || product.salePrice || 0))}</span>
+                  {product.category?.name || product.category ? (
+                    <small>{product.category?.name || product.category}</small>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state">
+            <Sparkles size={22} />
+            <strong>No trending products yet</strong>
+            <span>Trending products will appear when the API provides trendingProducts.</span>
+          </div>
+        )}
       </section>
 
       {/* Recent orders */}

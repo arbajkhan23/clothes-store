@@ -1,5 +1,11 @@
-import { useState } from 'react';
-import { ArrowRight, LockKeyhole, ShoppingBag } from 'lucide-react';
+
+import React, { useState } from 'react';
+import {
+  ArrowRight,
+  LockKeyhole,
+  ShoppingBag,
+  ShieldCheck,
+} from 'lucide-react';
 import { api, errorMessage } from './api';
 
 export function Login({ onLogin, notify }) {
@@ -11,14 +17,21 @@ export function Login({ onLogin, notify }) {
     event.preventDefault();
     setBusy(true);
     setError('');
+
     const form = new FormData(event.currentTarget);
     const payload = Object.fromEntries(form.entries());
+
     try {
-      const { data } = await api.post(setup ? '/auth/setup-admin' : '/auth/login', payload);
-      if (data.user.role !== 'admin') {
+      const { data } = await api.post(
+        setup ? '/auth/setup-admin' : '/auth/login',
+        payload
+      );
+
+      if (data.user?.role !== 'admin') {
         setError('This account does not have administrator access.');
         return;
       }
+
       localStorage.setItem('clothes-admin-token', data.token);
       onLogin(data.user);
       notify(setup ? 'Administrator account created.' : 'Welcome back.');
@@ -29,44 +42,143 @@ export function Login({ onLogin, notify }) {
     }
   }
 
+  function toggleMode() {
+    setSetup((current) => !current);
+    setError('');
+  }
+
   return (
-    <main className="login-shell">
-      <section className="login-art" aria-label="Clothes Store administration">
-        <div className="login-art-top"><span className="brand-mark"><ShoppingBag size={19} /></span><span>ATELIER / STORE OPS</span></div>
-        <div className="login-art-copy">
-          <span className="eyebrow">THE DAILY EDIT</span>
-          <h1>Good things<br />are in motion.</h1>
-          <p>A clear view of your store, from first click to final delivery.</p>
-        </div>
-        <div className="login-photo-label"><span>COLLECTION 01</span><span>NEW SEASON / 2026</span></div>
-      </section>
-      <section className="login-panel">
-        <div className="login-panel-inner">
-          <div className="login-mobile-brand"><span className="brand-mark"><ShoppingBag size={18} /></span> CLOTHES STORE</div>
-          <div className="login-icon"><LockKeyhole size={20} /></div>
-          <p className="eyebrow">ADMIN WORKSPACE</p>
-          <h2>{setup ? 'Create your admin' : 'Welcome back'}</h2>
-          <p className="login-subtitle">{setup ? 'Set up the first administrator for this store.' : 'Sign in to manage your store operations.'}</p>
-          <form className="login-form" onSubmit={submit}>
-            {setup && <Field label="Full name" name="name" placeholder="Your name" required minLength={2} />}
-            <Field label="Email address" name="email" type="email" placeholder="you@yourstore.com" required />
-            <Field label="Password" name="password" type="password" placeholder="At least 10 characters" required minLength={10} />
-            {setup && <Field label="One-time setup key" name="setupKey" type="password" placeholder="From backend/.env" required />}
-            {error && <p className="form-error" role="alert">{error}</p>}
-            <button className="button button-dark login-submit" type="submit" disabled={busy}>
-              {busy ? <span className="spinner spinner-light" /> : <>{setup ? 'Create administrator' : 'Sign in'} <ArrowRight size={16} /></>}
+    <main className="fashion-auth">
+      <header className="fashion-auth-header">
+        <a className="fashion-auth-brand" href="/" aria-label="Fashion Store">
+          <span className="fashion-auth-logo">
+            <ShoppingBag size={19} strokeWidth={1.8} />
+          </span>
+          <span>
+            <strong>FASHION STORE</strong>
+            <small>ADMINISTRATION</small>
+          </span>
+        </a>
+        <span className="fashion-auth-secure">
+          <ShieldCheck size={15} />
+          Secure admin access
+        </span>
+      </header>
+
+      <section className="fashion-auth-content">
+        <div className="fashion-auth-card">
+          <div className="fashion-auth-icon">
+            <LockKeyhole size={22} strokeWidth={1.7} />
+          </div>
+
+          <p className="fashion-auth-eyebrow">
+            {setup ? 'FIRST-TIME CONFIGURATION' : 'ADMIN WORKSPACE'}
+          </p>
+
+          <h1>
+            {setup ? 'Create your admin' : 'Welcome back'}
+          </h1>
+
+          <p className="fashion-auth-description">
+            {setup
+              ? 'Set up your administrator account to manage your store.'
+              : 'Sign in to manage products, orders and your store.'}
+          </p>
+
+          <form className="fashion-auth-form" onSubmit={submit}>
+            {setup && (
+              <Field
+                label="Full name"
+                name="name"
+                placeholder="Enter your full name"
+                required
+                minLength={2}
+                autoComplete="name"
+              />
+            )}
+
+            <Field
+              label="Email address"
+              name="email"
+              type="email"
+              placeholder="you@yourstore.com"
+              required
+              autoComplete="username"
+            />
+
+            <Field
+              label="Password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              required
+              minLength={setup ? 10 : undefined}
+              autoComplete={setup ? 'new-password' : 'current-password'}
+            />
+
+            {setup && (
+              <Field
+                label="One-time setup key"
+                name="setupKey"
+                type="password"
+                placeholder="Enter your setup key"
+                required
+                autoComplete="off"
+              />
+            )}
+
+            {error && (
+              <p className="fashion-auth-error" role="alert">
+                {error}
+              </p>
+            )}
+
+            <button
+              className="fashion-auth-submit"
+              type="submit"
+              disabled={busy}
+            >
+              {busy ? (
+                <span className="fashion-auth-spinner" />
+              ) : (
+                <>
+                  {setup ? 'Create administrator' : 'Sign in to dashboard'}
+                  <ArrowRight size={17} />
+                </>
+              )}
             </button>
           </form>
-          <button className="text-button setup-toggle" type="button" onClick={() => { setSetup(!setup); setError(''); }}>
-            {setup ? 'Already configured? Sign in' : 'First time here? Set up your administrator'}
-          </button>
-          <p className="login-footnote">Protected with secure, role-based access</p>
+
+          <div className="fashion-auth-switch">
+            <span>
+              {setup ? 'Already configured?' : 'First time here?'}
+            </span>
+            <button type="button" onClick={toggleMode}>
+              {setup ? 'Sign in' : 'Set up administrator'}
+            </button>
+          </div>
+
+          <div className="fashion-auth-divider" />
+
+          <p className="fashion-auth-footnote">
+            <ShieldCheck size={14} />
+            Protected with secure, role-based access
+          </p>
         </div>
+
+        <p className="fashion-auth-copyright">
+          © {new Date().getFullYear()} Fashion Store. All rights reserved.
+        </p>
       </section>
     </main>
   );
 }
 
 function Field({ label, ...props }) {
-  return <label className="field"><span>{label}</span><input {...props} autoComplete={props.type === 'password' ? 'current-password' : 'off'} /></label>;
+  return (
+    <label className="fashion-auth-field">
+      <span>{label}</span>
+      <input {...props} />
+    </label>
+  );
 }

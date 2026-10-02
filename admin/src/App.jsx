@@ -1,69 +1,244 @@
-import { createContext, lazy, Suspense, useContext, useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { api, errorMessage } from './api';
-import { Login } from './Login';
-import { Layout } from './Layout';
+import React, {
+  createContext,
+  lazy,
+  Suspense,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-const Dashboard = lazy(() => import('./Dashboard').then((module) => ({ default: module.Dashboard })));
-const ProductsPage = lazy(() => import('./Catalog').then((module) => ({ default: module.ProductsPage })));
-const CategoriesPage = lazy(() => import('./Catalog').then((module) => ({ default: module.CategoriesPage })));
-const OrdersPage = lazy(() => import('./Orders').then((module) => ({ default: module.OrdersPage })));
-const CustomersPage = lazy(() => import('./Customers').then((module) => ({ default: module.CustomersPage })));
-const MerchandisingPage = lazy(() => import('./Merchandising').then((module) => ({ default: module.MerchandisingPage })));
+import { Navigate, Route, Routes } from "react-router-dom";
+import { api } from "./api";
+import { Login } from "./Login";
+import { Layout } from "./Layout";
 
+// Lazy-loaded pages
+const Dashboard = lazy(() =>
+  import("./Dashboard").then((module) => ({
+    default: module.Dashboard,
+  })),
+);
+
+const ProductsPage = lazy(() =>
+  import("./Catalog").then((module) => ({
+    default: module.ProductsPage,
+  })),
+);
+
+const CategoriesPage = lazy(() =>
+  import("./Catalog").then((module) => ({
+    default: module.CategoriesPage,
+  })),
+);
+
+const OrdersPage = lazy(() =>
+  import("./Orders").then((module) => ({
+    default: module.OrdersPage,
+  })),
+);
+
+const CustomersPage = lazy(() =>
+  import("./Customers").then((module) => ({
+    default: module.CustomersPage,
+  })),
+);
+
+const MerchandisingPage = lazy(() =>
+  import("./Merchandising").then((module) => ({
+    default: module.MerchandisingPage,
+  })),
+);
+
+// Toast context
 const ToastContext = createContext(() => {});
+
 export const useToast = () => useContext(ToastContext);
 
+// Loading screen
 function LoadingScreen() {
-  return <div className="loading-screen"><span className="spinner" />Loading your workspace</div>;
+  return (
+    <div className="loading-screen">
+      <span className="spinner" />
+      Loading your workspace
+    </div>
+  );
 }
 
+// Main App
 export default function App() {
   const [user, setUser] = useState(null);
-  const [checking, setChecking] = useState(Boolean(localStorage.getItem('clothes-admin-token')));
+  const [checking, setChecking] = useState(
+    Boolean(localStorage.getItem("clothes-admin-token")),
+  );
   const [toast, setToast] = useState(null);
 
+  // Verify logged-in user
   useEffect(() => {
     let active = true;
-    if (!localStorage.getItem('clothes-admin-token')) return undefined;
-    api.get('/auth/me')
+
+    const token = localStorage.getItem("clothes-admin-token");
+
+    if (!token) {
+      setChecking(false);
+      return undefined;
+    }
+
+    api
+      .get("/auth/me")
       .then(({ data }) => {
-        if (active && data.user.role === 'admin') setUser(data.user);
-        else if (active) localStorage.removeItem('clothes-admin-token');
+        if (active && data.user?.role === "admin") {
+          setUser(data.user);
+        } else if (active) {
+          localStorage.removeItem("clothes-admin-token");
+        }
       })
-      .catch(() => localStorage.removeItem('clothes-admin-token'))
-      .finally(() => active && setChecking(false));
-    return () => { active = false; };
+      .catch(() => {
+        if (active) {
+          localStorage.removeItem("clothes-admin-token");
+          setUser(null);
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setChecking(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
   }, []);
 
+  // Auto-dismiss toast
   useEffect(() => {
     if (!toast) return undefined;
-    const timeout = window.setTimeout(() => setToast(null), 3800);
+
+    const timeout = window.setTimeout(() => {
+      setToast(null);
+    }, 3800);
+
     return () => window.clearTimeout(timeout);
   }, [toast]);
 
-  const notify = (message, type = 'success') => setToast({ message, type });
-  const signOut = () => {
-    localStorage.removeItem('clothes-admin-token');
-    setUser(null);
+  // Show notification
+  const notify = (message, type = "success") => {
+    setToast({ message, type });
   };
 
-  if (checking) return <LoadingScreen />;
+  // Sign out
+  const signOut = () => {
+    localStorage.removeItem("clothes-admin-token");
+    setUser(null);
+    setToast(null);
+  };
+
+  // Authentication loading
+  if (checking) {
+    return <LoadingScreen />;
+  }
 
   return (
     <ToastContext.Provider value={notify}>
-      {toast && <div className={`toast toast-${toast.type}`} role="status">{toast.message}</div>}
+      {toast && (
+        <div
+          className={`toast toast-${toast.type}`}
+          role="status"
+          aria-live="polite"
+        >
+          {toast.message}
+        </div>
+      )}
+
       <Routes>
-        <Route path="/login" element={user ? <Navigate to="/" replace /> : <Login onLogin={setUser} notify={notify} />} />
-        <Route path="/" element={user ? <Layout user={user} onLogout={signOut} /> : <Navigate to="/login" replace />}>
-          <Route index element={<Suspense fallback={<LoadingScreen />}><Dashboard /></Suspense>} />
-          <Route path="products" element={<Suspense fallback={<LoadingScreen />}><ProductsPage /></Suspense>} />
-          <Route path="categories" element={<Suspense fallback={<LoadingScreen />}><CategoriesPage /></Suspense>} />
-          <Route path="orders" element={<Suspense fallback={<LoadingScreen />}><OrdersPage /></Suspense>} />
-          <Route path="customers" element={<Suspense fallback={<LoadingScreen />}><CustomersPage /></Suspense>} />
-          <Route path="merchandising" element={<Suspense fallback={<LoadingScreen />}><MerchandisingPage /></Suspense>} />
+        {/* Login page */}
+        <Route
+          path="/login"
+          element={
+            user ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Login onLogin={setUser} notify={notify} />
+            )
+          }
+        />
+
+        {/* Protected admin layout */}
+        <Route
+          path="/"
+          element={
+            user ? (
+              <Layout user={user} onLogout={signOut} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        >
+          {/* Dashboard */}
+          <Route
+            index
+            element={
+              <Suspense fallback={<LoadingScreen />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+
+          {/* Products */}
+          <Route
+            path="products"
+            element={
+              <Suspense fallback={<LoadingScreen />}>
+                <ProductsPage />
+              </Suspense>
+            }
+          />
+
+          {/* Categories */}
+          <Route
+            path="categories"
+            element={
+              <Suspense fallback={<LoadingScreen />}>
+                <CategoriesPage />
+              </Suspense>
+            }
+          />
+
+          {/* Orders */}
+          <Route
+            path="orders"
+            element={
+              <Suspense fallback={<LoadingScreen />}>
+                <OrdersPage />
+              </Suspense>
+            }
+          />
+
+          {/* Customers */}
+          <Route
+            path="customers"
+            element={
+              <Suspense fallback={<LoadingScreen />}>
+                <CustomersPage />
+              </Suspense>
+            }
+          />
+
+          {/* Merchandising */}
+          <Route
+            path="merchandising"
+            element={
+              <Suspense fallback={<LoadingScreen />}>
+                <MerchandisingPage />
+              </Suspense>
+            }
+          />
         </Route>
-        <Route path="*" element={<Navigate to={user ? '/' : '/login'} replace />} />
+
+        {/* Unknown routes */}
+        <Route
+          path="*"
+          element={<Navigate to={user ? "/" : "/login"} replace />}
+        />
       </Routes>
     </ToastContext.Provider>
   );

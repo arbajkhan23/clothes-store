@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Fashion Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #ff2d69;
+      --pink-dark: #e91e5b;
+      --text: #171717;
+      --muted: #777;
+      --border: #e6e6e6;
+      --surface: #fff;
+      --page: #f7f7f7;
+      --success: #16834a;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--page);
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    button, input, select { font: inherit; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 3px 15px rgba(0,0,0,.04);
+    }
+
+    .header-inner {
+      width: min(1200px, calc(100% - 40px));
+      min-height: 78px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: #111;
+      text-decoration: none;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .brand span { color: var(--pink); }
+
+    .header-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .header-links a {
+      color: #222;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .header-links a:hover { color: var(--pink); }
+
+    .page-heading {
+      padding: 30px 20px;
+      text-align: center;
+      background: #f3f3f3;
+      border-bottom: 1px solid #eee;
+    }
+
+    .breadcrumb {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .breadcrumb a { color: inherit; text-decoration: none; }
+    .breadcrumb a:hover { color: var(--pink); }
+
+    h1, h2, p { margin-top: 0; }
+
+    .page-heading h1 {
+      margin: 0;
+      font: 700 34px 'Playfair Display', Georgia, serif;
+    }
+
+    .checkout-steps {
+      width: min(620px, 100%);
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #999;
+      font-size: 12px;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      background: white;
+    }
+
+    .step.active { color: var(--text); font-weight: 600; }
+
+    .step.active .step-number {
+      color: #fff;
+      background: var(--pink);
+      border-color: var(--pink);
+    }
+
+    .checkout-container {
+      width: min(1200px, calc(100% - 40px));
+      margin: 32px auto 60px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(300px, .85fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .checkout-card {
+      min-width: 0;
+      padding: 26px;
+      background: var(--surface);
+      border: 1px solid #ededed;
+      border-radius: 12px;
+      box-shadow: 0 5px 24px rgba(0,0,0,.035);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 22px;
+      font: 700 23px 'Playfair Display', Georgia, serif;
+    }
+
+    .title-mark {
+      width: 4px;
+      height: 25px;
+      background: var(--pink);
+      border-radius: 5px;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px 16px;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      color: #444;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .field input, .field select {
+      display: block;
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 13px;
+      color: #222;
+      background: #fff;
+      border: 1px solid #dcdcdc;
+      border-radius: 7px;
+      outline: none;
+      font-size: 13px;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px rgba(255,45,105,.09);
+    }
+
+    .optional {
+      color: #999;
+      font-weight: 400;
+    }
+
+    .payment-section { margin-top: 30px; }
+
+    .payment-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px;
+      border: 1px solid var(--pink);
+      border-radius: 9px;
+      background: #fff7f9;
+      cursor: pointer;
+    }
+
+    .payment-option input {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--pink);
+    }
+
+    .payment-option strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .payment-option small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .payment-note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .summary-card { position: sticky; top: 100px; }
+
+    .summary-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .summary-heading .section-title { margin: 0; }
+
+    .item-count {
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .cart-items {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 66px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item img {
+      width: 66px;
+      height: 72px;
+      object-fit: cover;
+      border: 1px solid #eee;
+      border-radius: 7px;
+      background: #f5f5f5;
+    }
+
+    .item-name {
+      margin: 0 0 5px;
+      color: #222;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .item-qty, .item-unit-price {
+      display: block;
+      color: #888;
+      font-size: 11px;
+    }
+
+    .item-price {
+      color: #222;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 15px 0;
+      color: #666;
+      font-size: 12px;
+    }
+
+    .summary-row strong { color: #222; font-weight: 600; }
+
+    .summary-total {
+      margin-top: 18px;
+      padding-top: 17px;
+      border-top: 1px solid #ddd;
+      color: #111;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .summary-total strong {
+      color: var(--pink);
+      font-size: 19px;
+    }
+
+    .currency-note {
+      margin: 10px 0 0;
+      color: #999;
+      text-align: right;
+      font-size: 10px;
+    }
+
+    .delivery-note {
+      display: flex;
+      gap: 11px;
+      margin-top: 22px;
+      padding: 14px;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 8px;
+    }
+
+    .delivery-note strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 11px;
+    }
+
+    .delivery-note small {
+      color: #888;
+      font-size: 10px;
+    }
+
+    .place-order, .back-cart {
+      display: flex;
+      width: 100%;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .place-order {
+      margin-top: 24px;
+      color: #fff;
+      background: var(--pink);
+      border: 1px solid var(--pink);
+    }
+
+    .place-order:hover { background: var(--pink-dark); }
+    .place-order:disabled { opacity: .6; cursor: not-allowed; }
+
+    .back-cart {
+      margin-top: 12px;
+      color: #333;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+
+    .back-cart:hover { border-color: var(--pink); color: var(--pink); }
+
+    .checkout-error {
+      margin: 14px 0 0;
+      padding: 12px;
+      color: #a32020;
+      background: #fff0f0;
+      border: 1px solid #f1cccc;
+      border-radius: 7px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .checkout-confirmation {
+      padding: 24px 10px;
+      text-align: center;
+    }
+
+    .checkout-confirmation h2 {
+      font: 700 24px 'Playfair Display', Georgia, serif;
+    }
+
+    .checkout-confirmation p {
+      color: #555;
+      font-size: 13px;
+    }
+
+    .confirmation-total {
+      color: var(--pink) !important;
+      font-size: 17px !important;
+      font-weight: 700;
+    }
+
+    .empty-cart {
+      padding: 20px 10px;
+      color: #777;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .empty-cart a { color: var(--pink); font-weight: 600; }
+
+    .site-footer {
+      padding: 22px 20px;
+      color: #777;
+      background: #fff;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 850px) {
+      .checkout-container { grid-template-columns: 1fr; }
+      .summary-card { position: static; }
+    }
+
+    @media (max-width: 560px) {
+      .header-inner {
+        width: calc(100% - 28px);
+        min-height: 68px;
+      }
+
+      .brand { font-size: 24px; }
+      .header-links { gap: 12px; }
+      .header-links a { font-size: 11px; }
+      .page-heading { padding: 24px 12px; }
+      .page-heading h1 { font-size: 30px; }
+      .step { gap: 5px; font-size: 10px; }
+      .step-number { width: 24px; height: 24px; flex-basis: 24px; }
+
+      .checkout-container {
+        width: calc(100% - 24px);
+        margin: 20px auto 40px;
+        gap: 18px;
+      }
+
+      .checkout-card { padding: 19px 16px; }
+      .section-title { font-size: 20px; }
+      .fields { grid-template-columns: 1fr; gap: 15px; }
+      .field.full { grid-column: auto; }
+      .cart-item { grid-template-columns: 56px minmax(0,1fr) auto; gap: 9px; }
+      .cart-item img { width: 56px; height: 62px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">FASHION<span>.</span></a>
+      <nav class="header-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="products-list.html">Shop</a>
+        <a href="view-cart.html">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-heading">
+    <p class="breadcrumb">
+      <a href="index.html">Home</a> &nbsp;›&nbsp;
+      <a href="view-cart.html">Cart</a> &nbsp;›&nbsp; Checkout
+    </p>
+    <h1>Checkout</h1>
+    <div class="checkout-steps" aria-label="Checkout progress">
+      <div class="step active"><span class="step-number">1</span><span>Shipping</span></div>
+      <div class="step"><span class="step-number">2</span><span>Review</span></div>
+      <div class="step"><span class="step-number">3</span><span>Confirmed</span></div>
+    </div>
+  </section>
+
+  <main class="checkout-container">
+    <section class="checkout-card">
+      <h2 class="section-title"><span class="title-mark"></span>Shipping Address</h2>
+
+      <form id="checkoutForm">
+        <p id="checkoutError" class="checkout-error" role="alert" aria-live="assertive" hidden></p>
+
+        <div class="fields">
+          <div class="field">
+            <label for="customerName">Full name *</label>
+            <input id="customerName" name="customerName" type="text"
+                   autocomplete="name" maxlength="120"
+                   placeholder="Enter your full name" required>
+          </div>
+
+          <div class="field">
+            <label for="customerEmail">Email address *</label>
+            <input id="customerEmail" name="customerEmail" type="email"
+                   autocomplete="email" maxlength="254"
+                   placeholder="you@example.com" required>
+          </div>
+
+          <div class="field full">
+            <label for="line1">Address line 1 *</label>
+            <input id="line1" name="line1" type="text"
+                   autocomplete="address-line1" maxlength="200"
+                   placeholder="House number, street and area" required>
+          </div>
+
+          <div class="field full">
+            <label for="line2">Address line 2 <span class="optional">(optional)</span></label>
+            <input id="line2" name="line2" type="text"
+                   autocomplete="address-line2" maxlength="200"
+                   placeholder="Apartment, landmark, etc.">
+          </div>
+
+          <div class="field">
+            <label for="city">City *</label>
+            <input id="city" name="city" type="text"
+                   autocomplete="address-level2" maxlength="100"
+                   placeholder="City" required>
+          </div>
+
+          <div class="field">
+            <label for="region">State / region *</label>
+            <input id="region" name="region" type="text"
+                   autocomplete="address-level1" maxlength="100"
+                   placeholder="State" required>
+          </div>
+
+          <div class="field">
+            <label for="postalCode">Postal code *</label>
+            <input id="postalCode" name="postalCode" type="text"
+                   inputmode="numeric" autocomplete="postal-code"
+                   maxlength="6" pattern="[0-9]{6}"
+                   title="Enter a 6-digit Indian PIN code"
+                   placeholder="PIN code" required>
+          </div>
+
+          <div class="field">
+            <label for="country">Country *</label>
+            <select id="country" name="country" autocomplete="country-name" required>
+              <option value="India" selected>India</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="customerPhone">Phone number *</label>
+            <input id="customerPhone" name="customerPhone" type="tel"
+                   autocomplete="tel" maxlength="30"
+                   placeholder="+91 XXXXX XXXXX" required>
+          </div>
+        </div>
+
+        <div class="payment-section">
+          <h2 class="section-title"><span class="title-mark"></span>Payment Method</h2>
+          <label class="payment-option">
+            <input type="radio" name="paymentMethod" value="COD" checked>
+            <span>
+              <strong>Cash on Delivery</strong>
+              <small>Pay when your order arrives</small>
+            </span>
+          </label>
+          <p class="payment-note">
+            Online card and PayPal payments are not enabled.
+            No card details are collected on this page.
+          </p>
+        </div>
+
+        <button class="place-order" type="submit" id="placeOrderButton">
+          🔒 &nbsp; Place Order
+        </button>
+      </form>
+
+      <section class="checkout-confirmation" id="checkoutConfirmation"
+               aria-live="polite" hidden>
+        <h2>Thank you for your order!</h2>
+        <p>Your order <strong id="checkoutOrderNumber"></strong> has been received.</p>
+        <p class="confirmation-total">
+          Order total: <strong id="checkoutOrderTotal"></strong>
+        </p>
+        <a class="back-cart" href="products-list.html">Continue shopping</a>
+      </section>
+    </section>
+
+    <aside class="checkout-card summary-card">
+      <div class="summary-heading">
+        <h2 class="section-title"><span class="title-mark"></span>Order Summary</h2>
+        <span class="item-count" id="itemCount">0 items</span>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <div class="empty-cart">Loading your cart...</div>
+      </div>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="subtotal">₹0.00</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Shipping</span>
+        <strong id="shipping">Calculated at checkout</strong>
+      </div>
+
+      <div class="summary-row">
+        <span>Taxes</span>
+        <strong id="taxes">Calculated at checkout</strong>
+      </div>
+
+      <div class="summary-row summary-total">
+        <span>Total</span>
+        <strong id="total">₹0.00</strong>
+      </div>
+
+      <p class="currency-note">Prices shown in INR</p>
+
+      <div class="delivery-note">
+        <span aria-hidden="true">📍</span>
+        <span>
+          <strong>Delivery destination</strong>
+          <small id="deliveryCountry">India</small>
+        </span>
+      </div>
+
+      <p class="payment-note">
+        Delivery charges and taxes are subject to your store's checkout rules.
+      </p>
+
+      <a class="back-cart" href="view-cart.html">← &nbsp; Back to cart</a>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    © 2026 Fashion Store. All rights reserved.
+  </footer>
+
+  <!-- Checkout summary only. Order submission is handled by cart.js. -->
+  <script>
+    (() => {
+      'use strict';
+
+      const CART_KEYS = [
+        'fashion_store_cart',
+        'cart',
+        'lume_cart',
+        'clothes-cart',
+        'cartItems',
+        'shoppingCart'
+      ];
+
+      const $ = (id) => document.getElementById(id);
+
+      function readCart() {
+        for (const key of CART_KEYS) {
+          try {
+            const raw = localStorage.getItem(key);
+            if (!raw) continue;
+
+            const parsed = JSON.parse(raw);
+            const items = Array.isArray(parsed)
+              ? parsed
+              : parsed.items || parsed.cart || parsed.products;
+
+            if (Array.isArray(items)) return items;
+          } catch (error) {
+            console.warn('Unable to read cart storage:', key, error);
+          }
+        }
+        return [];
+      }
+
+      function itemName(item) {
+        return item.name || item.title || item.productName ||
+          item.product?.name || 'Product';
+      }
+
+      function itemPrice(item) {
+        return Number(
+          item.price ?? item.salePrice ?? item.product?.price ?? 0
+        ) || 0;
+      }
+
+      function itemQuantity(item) {
+        return Math.max(1, Number(item.quantity ?? item.qty ?? 1) || 1);
+      }
+
+      function itemImage(item) {
+        return item.image || item.imageUrl || item.thumbnail ||
+          item.product?.image || item.product?.thumbnail ||
+          item.product?.images?.[0] || '';
+      }
+
+      function money(value) {
+        return new Intl.NumberFormat('en-IN', {
+          style: 'currency',
+          currency: 'INR',
+          maximumFractionDigits: 2
+        }).format(Number(value) || 0);
+      }
+
+      function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        })[char]);
+      }
+
+      function renderCart() {
+        const cart = readCart();
+        const container = $('cartItems');
+        const button = $('placeOrderButton');
+
+        if (!container || !button) return;
+
+        const count = cart.reduce((sum, item) => sum + itemQuantity(item), 0);
+        const subtotal = cart.reduce(
+          (sum, item) => sum + itemPrice(item) * itemQuantity(item), 0
+        );
+
+        $('itemCount').textContent =
+          `${count} ${count === 1 ? 'item' : 'items'}`;
+        $('subtotal').textContent = money(subtotal);
+        $('total').textContent = money(subtotal);
+        button.disabled = cart.length === 0;
+
+        if (!cart.length) {
+          container.innerHTML =
+            '<div class="empty-cart">Your cart is empty. ' +
+            '<a href="products-list.html">Continue shopping</a></div>';
+          return;
+        }
+
+        container.innerHTML = cart.map((item) => {
+          const name = escapeHTML(itemName(item));
+          const image = itemImage(item);
+          const quantity = itemQuantity(item);
+          const price = itemPrice(item);
+
+          const imageMarkup = image
+            ? `<img src="${escapeHTML(image)}" alt="${name}" loading="lazy">`
+            : '<div class="empty-cart" aria-hidden="true">No image</div>';
+
+          return `
+            <article class="cart-item">
+              ${imageMarkup}
+              <div>
+                <p class="item-name">${name}</p>
+                <span class="item-qty">Qty: ${quantity}</span>
+                <span class="item-unit-price">${money(price)} each</span>
+              </div>
+              <span class="item-price">${money(price * quantity)}</span>
+            </article>
+          `;
+        }).join('');
+      }
+
+      $('country')?.addEventListener('change', (event) => {
+        const destination = $('deliveryCountry');
+        if (destination) destination.textContent = event.target.value;
+      });
+
+      renderCart();
+    })();
+  </script>
+
+  <!-- Keep this script: it resolves cart products and submits the order. -->
+  <script src="./js/cart.js"></script>
+</body>
+</html>
