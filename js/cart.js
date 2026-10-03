@@ -64,9 +64,9 @@ class CartManager {
       price:
         parseFloat(
           card.dataset.price ||
-            card
-              .querySelector(".current-price, .product-price")
-              ?.textContent?.replace(/[^0-9.-]+/g, ""),
+          card
+            .querySelector(".current-price, .product-price")
+            ?.textContent?.replace(/[^0-9.-]+/g, ""),
         ) || 0,
       image: card.querySelector("img")?.src || "",
       stock: Number(card.dataset.stock),
@@ -572,7 +572,7 @@ class CartManager {
         if (!response.ok)
           throw new Error(
             result.error ||
-              "The store catalog could not be checked. Please try again.",
+            "The store catalog could not be checked. Please try again.",
           );
         const normalizedName = String(item.name || "")
           .trim()
