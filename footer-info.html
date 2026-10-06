@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store Information | Fashion Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/footer-info.css" />
+  </head>
+  <body>
+    <!-- ===== START: HEADER & NAVBAR SECTION ===== -->
+    <header class="main-header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="./index.html">LOGO</a>
+
+          <!-- Mobile Toggle Button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Navigation Menu -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <!-- HOME Link -->
+              <li class="nav-item">
+                <a class="nav-link active" href="./index.html">HOME</a>
+              </li>
+
+              <!-- SHOP Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="shopDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  SHOP
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./products-list.html"
+                      >Active Casual</a
+                    >
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Featured Products</a>
+                  </li>
+                  <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                  <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">On Sale / Discounted</a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- COLLECTIONS Link -->
+              <li class="nav-item">
+                <a class="nav-link dropdown-toggle" href="./collections.html"
+                  >COLLECTIONS</a
+                >
+              </li>
+
+              <!-- WATCHES Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="watchesDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  WATCHES
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Luxury Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Sports Watches</a></li>
+                  <li><a class="dropdown-item" href="#">Smart Watches</a></li>
+                </ul>
+              </li>
+
+              <!-- MORE Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="moreDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  MORE
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./Contact.html"
+                      >Contact us</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="./Blog.html">Blog</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- Search and User Icons -->
+            <div class="d-flex align-items-center">
+              <!-- Search Box -->
+              <div class="search-box">
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  id="searchInput"
+                />
+                <button type="submit" id="searchBtn">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+
+              <!-- Header Icons -->
+              <div class="header-icons ms-3">
+                <!-- User Icon -->
+                <a
+                  href="#"
+                  class="icon-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  <i class="far fa-user"></i>
+                </a>
+                <!-- Wishlist Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="far fa-heart"></i>
+                  <span class="cart-badge">0</span>
+                </a>
+                <!-- Cart Icon -->
+                <a href="#" class="icon-btn">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span class="cart-badge">5</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- ===== END: HEADER & NAVBAR SECTION ===== -->
+    <main class="footer-info-main">
+      <div class="container">
+        <nav aria-label="Breadcrumb" class="footer-info-breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span id="breadcrumbTopic">Store information</span>
+        </nav>
+        <div class="footer-info-layout">
+          <aside class="footer-info-sidebar" aria-label="Store information topics">
+            <p class="footer-info-eyebrow">CUSTOMER CARE</p>
+            <nav id="topicNavigation" class="footer-info-nav"></nav>
+          </aside>
+          <article class="footer-info-content" id="topicContent" aria-live="polite"></article>
+        </div>
+      </div>
+    </main>
+
+     <!-- ===== START: FOOTER SECTION ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title">About Information</h5>
+            <p><i class="fas fa-store me-2"></i> Fashion Store</p>
+            <p>
+              <i class="fas fa-location-dot me-2"></i> Union Trade Ipsum Doler
+            </p>
+            <p><i class="fas fa-envelope me-2"></i> gmail@example.com</p>
+            <p><i class="fas fa-phone me-2"></i> 91 8002336671</p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Your Account</h5>
+            <ul class="footer-links">
+              <li><a href="products-list.html">Search</a></li>
+              <li><a href="AboutUs.html">About Us</a></li>
+              <li><a href="footer-info.html?page=delivery-information">Delivery Information</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Blog.html">Our Stories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Information</h5>
+            <ul class="footer-links">
+              <li><a href="footer-info.html?page=size-chart">Size Chart</a></li>
+              <li><a href="footer-info.html?page=shipping">Shipping</a></li>
+              <li><a href="footer-info.html?page=legal-notice">Legal Notice</a></li>
+              <li><a href="footer-info.html?page=delivery">Delivery</a></li>
+              <li><a href="footer-info.html?page=sitemap">Sitemap</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h5 class="footer-title">Quick links</h5>
+            <ul class="footer-links">
+              <li><a href="footer-info.html?page=privacy-policy">Privacy Policy</a></li>
+              <li><a href="footer-info.html?page=refund-policy">Refund Policy</a></li>
+              <li><a href="footer-info.html?page=shipping-policy">Shipping Policy</a></li>
+              <li><a href="footer-info.html?page=terms-of-service">Terms of Service</a></li>
+              <li><a href="footer-info.html?page=buyer-policy">Policy for Buyers</a></li>
+              <li><a href="footer-info.html?page=seller-policy">Policy for Sellers</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+            <h5 class="footer-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="#" class="social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="fab fa-pinterest"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p class="mb-0">© 2026 Fashion Store. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== END: FOOTER SECTION ===== -->
+
+    <script>
+      const topics = {
+        "delivery-information": {
+          title: "Delivery Information",
+          group: "Your Account",
+          intro: "Find out what to expect after placing an order with Fashion Store.",
+          sections: [
+            { heading: "Order updates", paragraphs: ["We send order and dispatch updates to the email address entered at checkout. Check your inbox and spam folder for the latest status."] },
+            { heading: "Delivery estimates", paragraphs: ["Available delivery options, charges and estimated arrival dates are shown at checkout for your address. Tracking details are shared when they are available."] },
+            { heading: "Need help?", paragraphs: ["If an order appears delayed or your delivery details need correcting, contact our team with your order number as soon as possible."], link: { label: "Contact us", href: "Contact.html" } }
+          ]
+        },
+        "size-chart": {
+          title: "Size Chart",
+          group: "Information",
+          intro: "Use these measuring notes to choose the best fit. Product cuts can vary, so check the measurements on the individual product listing when provided.",
+          table: {
+            headers: ["Measurement", "How to measure"],
+            rows: [
+              ["Chest / bust", "Measure around the fullest part of the chest, keeping the tape level."],
+              ["Waist", "Measure around the natural waist without pulling the tape tight."],
+              ["Hips", "Measure around the fullest part of the hips while standing naturally."],
+              ["Inseam", "Measure from the top of the inner leg to the desired trouser length."]
+            ]
+          },
+          sections: [
+            { heading: "Between sizes?", paragraphs: ["Compare your measurements with the product details and fit notes. For a relaxed fit, consider the larger size; for a closer fit, consider the smaller size."] },
+            { heading: "Still unsure?", paragraphs: ["Send us the product name and the fit you prefer, and our team will help you decide."], link: { label: "Ask our team", href: "Contact.html" } }
+          ]
+        },
+        shipping: {
+          title: "Shipping",
+          group: "Information",
+          intro: "Shipping methods and costs depend on the delivery address and the items in your order.",
+          sections: [
+            { heading: "Available shipping options", paragraphs: ["The shipping methods available for your order, their costs and estimated delivery windows are displayed during checkout before payment."] },
+            { heading: "Order processing", paragraphs: ["Orders are prepared after payment is confirmed. Processing and carrier transit are separate parts of the delivery estimate."] },
+            { heading: "Address changes", paragraphs: ["Contact us promptly if you notice an address error. We may not be able to change the destination once an order has been dispatched."], link: { label: "Contact us", href: "Contact.html" } }
+          ]
+        },
+        "legal-notice": {
+          title: "Legal Notice",
+          group: "Information",
+          intro: "This website is operated as Fashion Store. Please use the contact details on our Contact page for questions about the store or these terms.",
+          sections: [
+            { heading: "Website content", paragraphs: ["Product descriptions, prices and availability may be updated as the store changes. We take care to keep listings accurate and will address confirmed errors as required by applicable law."] },
+            { heading: "Intellectual property", paragraphs: ["Store branding, written content and original imagery are intended for use on this website. Do not reproduce or reuse them without permission from the rights holder."] },
+            { heading: "Contact", paragraphs: ["For legal or store-related enquiries, please use our contact page."], link: { label: "Contact Fashion Store", href: "Contact.html" } }
+          ]
+        },
+        delivery: {
+          title: "Delivery",
+          group: "Information",
+          intro: "A quick guide to receiving your order.",
+          sections: [
+            { heading: "Before placing your order", paragraphs: ["Review your delivery address carefully and select from the delivery services offered at checkout. The checkout estimate is based on the destination entered."] },
+            { heading: "After dispatch", paragraphs: ["Where carrier tracking is available, we will share the tracking details with your order update. Carrier scans may take time to appear after dispatch."] },
+            { heading: "A delivery issue?", paragraphs: ["If a parcel is marked delivered but you cannot find it, check with other household members or your building's reception, then contact us with your order number."], link: { label: "Get help", href: "Contact.html" } }
+          ]
+        },
+        sitemap: {
+          title: "Sitemap",
+          group: "Information",
+          intro: "Browse the main areas of Fashion Store.",
+          sections: [
+            { heading: "Shop", links: [{ label: "All products", href: "products-list.html" }, { label: "Collections", href: "collections.html" }, { label: "Shopping cart", href: "view-cart.html" }] },
+            { heading: "Discover", links: [{ label: "Home", href: "index.html" }, { label: "About us", href: "AboutUs.html" }, { label: "Our stories", href: "Blog.html" }] },
+            { heading: "Help and policies", links: [{ label: "Contact", href: "Contact.html" }, { label: "Shipping", href: "footer-info.html?page=shipping" }, { label: "Privacy Policy", href: "footer-info.html?page=privacy-policy" }, { label: "Terms of Service", href: "footer-info.html?page=terms-of-service" }] }
+          ]
+        },
+        "privacy-policy": {
+          title: "Privacy Policy",
+          group: "Quick links",
+          intro: "We use the information you provide to operate the store and support your shopping experience.",
+          sections: [
+            { heading: "Information we use", paragraphs: ["Information submitted during checkout or when contacting us may include your name, contact details, delivery address and order information."] },
+            { heading: "How it is used", paragraphs: ["We use relevant information to process orders, arrange delivery, respond to enquiries and maintain store operations. Payment details are handled by the payment service selected at checkout."] },
+            { heading: "Your choices", paragraphs: ["Contact us to ask about the personal information associated with your order. We retain or disclose information only as needed to provide the service and meet applicable obligations."], link: { label: "Privacy enquiry", href: "Contact.html" } }
+          ]
+        },
+        "refund-policy": {
+          title: "Refund Policy",
+          group: "Quick links",
+          intro: "If something is not right with your order, contact us with your order number and the item details so we can help.",
+          sections: [
+            { heading: "Requesting a return", paragraphs: ["Contact our team before sending an item back. We will confirm the next steps and any return instructions for your order."] },
+            { heading: "Refunds", paragraphs: ["Once an approved return is received and checked, eligible refunds are issued to the original payment method. Processing time can depend on your bank or payment provider."] },
+            { heading: "Your rights", paragraphs: ["This policy does not limit any rights that apply to you under local consumer law. Any item-specific conditions will be explained when you contact us."], link: { label: "Contact us about a return", href: "Contact.html" } }
+          ]
+        },
+        "shipping-policy": {
+          title: "Shipping Policy",
+          group: "Quick links",
+          intro: "Our shipping options are presented at checkout based on your delivery location.",
+          sections: [
+            { heading: "Rates and estimates", paragraphs: ["The applicable shipping charge and estimated delivery window are shown before you place your order. Estimates can change due to carrier or destination conditions."] },
+            { heading: "Dispatch and tracking", paragraphs: ["We share dispatch updates and tracking information when available. Please make sure the email address and delivery details in your order are correct."] },
+            { heading: "Delivery support", paragraphs: ["Contact us with your order number if your parcel is delayed, arrives damaged or has an address issue."], link: { label: "Contact our team", href: "Contact.html" } }
+          ]
+        },
+        "terms-of-service": {
+          title: "Terms of Service",
+          group: "Quick links",
+          intro: "These terms apply when you browse or place an order through the Fashion Store website.",
+          sections: [
+            { heading: "Orders and availability", paragraphs: ["An order request is subject to product availability, payment confirmation and acceptance by the store. We will contact you if an order cannot be fulfilled."] },
+            { heading: "Product information", paragraphs: ["We aim to show products, prices and descriptions accurately. Colours may appear differently depending on your screen, and availability can change."] },
+            { heading: "Using this website", paragraphs: ["Use the website lawfully and do not interfere with its operation or attempt unauthorized access. Applicable consumer rights continue to apply."] },
+            { heading: "Questions", paragraphs: ["For questions about an order or these terms, contact our team."], link: { label: "Contact us", href: "Contact.html" } }
+          ]
+        },
+        "buyer-policy": {
+          title: "Policy for Buyers",
+          group: "Quick links",
+          intro: "We want every order to be clear and straightforward from checkout through delivery.",
+          sections: [
+            { heading: "Before checkout", paragraphs: ["Review item options, quantities, delivery details and the total shown at checkout before submitting your order."] },
+            { heading: "After purchase", paragraphs: ["Keep your order confirmation and contact us if you need help, spot an issue or believe an item is not as described."] },
+            { heading: "Returns and support", paragraphs: ["Contact us before returning an item so we can provide instructions. Applicable consumer protections are not affected by this policy."], link: { label: "Contact Fashion Store", href: "Contact.html" } }
+          ]
+        },
+        "seller-policy": {
+          title: "Policy for Sellers",
+          group: "Quick links",
+          intro: "Fashion Store listings are managed by the store. A seller must have written approval from Fashion Store before offering products through this website.",
+          sections: [
+            { heading: "Product and listing standards", paragraphs: ["Approved sellers are responsible for accurate descriptions, lawful products, genuine imagery and keeping availability information up to date."] },
+            { heading: "Orders and customer care", paragraphs: ["Approved sellers must meet agreed dispatch and service standards and cooperate promptly when a customer raises an order issue."] },
+            { heading: "Seller enquiries", paragraphs: ["Contact us before submitting products or seller information. Unapproved submissions do not create a seller relationship."], link: { label: "Enquire with us", href: "Contact.html" } }
+          ]
+        }
+      };
+
+      const topicLinks = [
+        ["delivery-information", "Delivery Information"],
+        ["size-chart", "Size Chart"],
+        ["shipping", "Shipping"],
+        ["legal-notice", "Legal Notice"],
+        ["delivery", "Delivery"],
+        ["sitemap", "Sitemap"],
+        ["privacy-policy", "Privacy Policy"],
+        ["refund-policy", "Refund Policy"],
+        ["shipping-policy", "Shipping Policy"],
+        ["terms-of-service", "Terms of Service"],
+        ["buyer-policy", "Policy for Buyers"],
+        ["seller-policy", "Policy for Sellers"]
+      ];
+
+      const escapeHtml = (value) =>
+        String(value).replace(/[&<>"']/g, (character) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        })[character]);
+      const currentTopic = new URLSearchParams(window.location.search).get("page");
+      const topic = topics[currentTopic] || topics["delivery-information"];
+      const renderLink = (link) => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`;
+      const sections = topic.sections.map((section) => `
+        <section class="footer-info-section">
+          <h2>${escapeHtml(section.heading)}</h2>
+          ${(section.paragraphs || []).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
+          ${section.links ? `<ul>${section.links.map((link) => `<li>${renderLink(link)}</li>`).join("")}</ul>` : ""}
+          ${section.link ? `<p class="footer-info-action">${renderLink(section.link)}</p>` : ""}
+        </section>
+      `).join("");
+      const table = topic.table ? `
+        <div class="table-responsive footer-info-table-wrap">
+          <table class="table footer-info-table">
+            <thead><tr>${topic.table.headers.map((header) => `<th scope="col">${escapeHtml(header)}</th>`).join("")}</tr></thead>
+            <tbody>${topic.table.rows.map((row) => `<tr>${row.map((cell) => `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody>
+          </table>
+        </div>
+      ` : "";
+
+      document.title = `${topic.title} | Fashion Store`;
+      document.getElementById("breadcrumbTopic").textContent = topic.title;
+      document.getElementById("topicNavigation").innerHTML = topicLinks.map(([key, label]) =>
+        `<a class="${key === currentTopic ? "active" : ""}" ${key === currentTopic ? 'aria-current="page"' : ""} href="footer-info.html?page=${key}">${label}</a>`
+      ).join("");
+      document.getElementById("topicContent").innerHTML = `
+        <p class="footer-info-eyebrow">${escapeHtml(topic.group)}</p>
+        <h1>${escapeHtml(topic.title)}</h1>
+        <p class="footer-info-intro">${escapeHtml(topic.intro)}</p>
+        ${table}
+        ${sections}
+      `;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

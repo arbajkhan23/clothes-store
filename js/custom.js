@@ -120,6 +120,7 @@ document
 // Wishlist toggle
 document.querySelectorAll(".fa-heart").forEach((icon) => {
   icon.addEventListener("click", function (e) {
+        if (this.closest(".header-icons .icon-btn")) return;
     e.preventDefault();
     e.stopPropagation();
 
@@ -1457,6 +1458,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Page Loader
       document.addEventListener('DOMContentLoaded', function() {
           const pageLoader = document.getElementById('pageLoader');
+          if (!pageLoader) return;
           
           // Simulate loading time
           setTimeout(() => {

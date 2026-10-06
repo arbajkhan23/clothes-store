@@ -1,479 +1,585 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>About Us | Fashion Store</title>
+  <title>About Us | Fashion Store</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
+  <!-- ===== START: HEADER & NAVBAR SECTION ===== -->
+  <header class="main-header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./index.html">LOGO</a>
 
-    <!-- =========================
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <!-- HOME Link -->
+            <li class="nav-item">
+              <a class="nav-link active" href="./index.html">HOME</a>
+            </li>
+
+            <!-- SHOP Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown">
+                SHOP
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./products-list.html">Active Casual</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Featured Products</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Best Sellers</a></li>
+                <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">On Sale / Discounted</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- COLLECTIONS Link -->
+            <li class="nav-item">
+              <a class="nav-link dropdown-toggle" href="./collections.html">COLLECTIONS</a>
+            </li>
+
+            <!-- WATCHES Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="watchesDropdown" role="button" data-bs-toggle="dropdown">
+                WATCHES
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Luxury Watches</a></li>
+                <li><a class="dropdown-item" href="#">Sports Watches</a></li>
+                <li><a class="dropdown-item" href="#">Smart Watches</a></li>
+              </ul>
+            </li>
+
+            <!-- MORE Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown">
+                MORE
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="./Contact.html">Contact us</a>
+                </li>
+                <li><a class="dropdown-item" href="./Blog.html">Blog</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- Search and User Icons -->
+          <div class="d-flex align-items-center">
+            <!-- Search Box -->
+            <div class="search-box">
+              <input type="text" placeholder="Search products..." id="searchInput" />
+              <button type="submit" id="searchBtn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+
+            <!-- Header Icons -->
+            <div class="header-icons ms-3">
+              <!-- User Icon -->
+              <a href="#" class="icon-btn" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Login">
+                <i class="far fa-user"></i>
+              </a>
+              <!-- Wishlist Icon -->
+              <a href="#" class="icon-btn" aria-label="Open wishlist">
+                <i class="far fa-heart"></i>
+                <span class="cart-badge">0</span>
+              </a>
+              <!-- Cart Icon -->
+              <a href="#" class="icon-btn" aria-label="Open cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- ===== END: HEADER & NAVBAR SECTION ===== -->
+
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="auth-container">
+            <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close login">
+              <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-tabs mb-4">
+              <button type="button" class="auth-tab active" onclick="showTab('login')">LOGIN</button>
+              <button type="button" class="auth-tab" onclick="showTab('register')">REGISTER</button>
+            </div>
+            <div id="loginTab" class="auth-form active">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Email" autocomplete="email" required />
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" placeholder="Password" autocomplete="current-password" required />
+                </div>
+                <div class="mb-3 text-end">
+                  <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-dark w-100">SIGN IN</button>
+                <p class="text-center mt-4 mb-0">No account yet? <a href="#" class="switch-link" onclick="showTab('register')">Create an account</a></p>
+              </form>
+            </div>
+            <div id="registerTab" class="auth-form">
+              <form id="registerForm">
+                <div class="row mb-3">
+                  <div class="col-6"><input type="text" class="form-control" placeholder="First name" autocomplete="given-name" required /></div>
+                  <div class="col-6"><input type="text" class="form-control" placeholder="Last name" autocomplete="family-name" required /></div>
+                </div>
+                <div class="mb-3">
+                  <input type="email" class="form-control" placeholder="Email" autocomplete="email" required />
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" placeholder="Password" autocomplete="new-password" required />
+                </div>
+                <div class="mb-4">
+                  <input type="password" class="form-control" placeholder="Confirm password" autocomplete="new-password" required />
+                </div>
+                <button type="submit" class="btn btn-dark w-100">CREATE ACCOUNT</button>
+                <p class="text-center mt-4 mb-0">Already have an account? <a href="#" class="switch-link" onclick="showTab('login')">Sign in</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
      ABOUT HERO
 ========================= -->
 
-    <section class="about-hero">
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <span class="small-heading"> ABOUT OUR STORE </span>
 
-        <div class="about-hero-content">
+      <h1>
+        Fashion Made
+        <br />
+        For Everyday Life
+      </h1>
 
-            <span class="small-heading">
-                ABOUT OUR STORE
-            </span>
+      <p>
+        Discover modern fashion designed to make every day more stylish,
+        comfortable and confident.
+      </p>
 
-            <h1>
-                Fashion Made
-                <br>
-                For Everyday Life
-            </h1>
+      <a href="products-list.html" class="primary-btn"> SHOP NOW </a>
+    </div>
 
-            <p>
-                Discover modern fashion designed to make every day
-                more stylish, comfortable and confident.
-            </p>
+    <div class="about-hero-image">
+      <img src="images/photo-1523170335258-f5ed11844a49.avif" alt="Fashion Collection" />
+    </div>
+  </section>
 
-            <a href="products-list.html" class="primary-btn">
-                SHOP NOW
-            </a>
-
-        </div>
-
-        <div class="about-hero-image">
-
-            <img src="images/photo-1523170335258-f5ed11844a49.avif" alt="Fashion Collection">
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
+  <!-- =========================
      OUR STORY
 ========================= -->
 
-    <section class="story-section">
+  <section class="story-section">
+    <div class="container story-grid">
+      <div class="story-image">
+        <img src="images/photo-1576566588028-4147f3842f27.avif" alt="Our Fashion Story" />
+      </div>
 
-        <div class="container story-grid">
+      <div class="story-content">
+        <span class="section-label"> OUR STORY </span>
 
-            <div class="story-image">
+        <h2>
+          Style That Speaks
+          <br />
+          For You
+        </h2>
 
-                <img src="images/photo-1576566588028-4147f3842f27.avif" alt="Our Fashion Story">
+        <p>
+          We believe fashion is more than just clothing. It's a way to express
+          your personality, your confidence and your everyday lifestyle.
+        </p>
 
-            </div>
+        <p>
+          Our collection brings together modern designs, comfortable fabrics
+          and timeless styles to create pieces that you can confidently wear
+          every day.
+        </p>
 
+        <p>
+          From everyday essentials to statement pieces, we carefully select
+          products that combine quality, style and value.
+        </p>
 
-            <div class="story-content">
+        <a href="products-list.html" class="outline-btn">
+          EXPLORE COLLECTION
+        </a>
+      </div>
+    </div>
+  </section>
 
-                <span class="section-label">
-                    OUR STORY
-                </span>
-
-                <h2>
-                    Style That Speaks
-                    <br>
-                    For You
-                </h2>
-
-                <p>
-                    We believe fashion is more than just clothing.
-                    It's a way to express your personality, your
-                    confidence and your everyday lifestyle.
-                </p>
-
-                <p>
-                    Our collection brings together modern designs,
-                    comfortable fabrics and timeless styles to create
-                    pieces that you can confidently wear every day.
-                </p>
-
-                <p>
-                    From everyday essentials to statement pieces,
-                    we carefully select products that combine quality,
-                    style and value.
-                </p>
-
-                <a href="products-list.html" class="outline-btn">
-                    EXPLORE COLLECTION
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
+  <!-- =========================
      STATS
 ========================= -->
 
-    <section class="stats-section">
+  <section class="stats-section">
+    <div class="container stats-grid">
+      <div class="stat-box">
+        <h3>10K+</h3>
 
-        <div class="container stats-grid">
+        <p>Happy Customers</p>
+      </div>
 
-            <div class="stat-box">
+      <div class="stat-box">
+        <h3>500+</h3>
 
-                <h3>10K+</h3>
+        <p>Products</p>
+      </div>
 
-                <p>
-                    Happy Customers
-                </p>
+      <div class="stat-box">
+        <h3>25+</h3>
 
-            </div>
+        <p>Fashion Categories</p>
+      </div>
 
+      <div class="stat-box">
+        <h3>4.8</h3>
 
-            <div class="stat-box">
+        <p>Customer Rating</p>
+      </div>
+    </div>
+  </section>
 
-                <h3>500+</h3>
-
-                <p>
-                    Products
-                </p>
-
-            </div>
-
-
-            <div class="stat-box">
-
-                <h3>25+</h3>
-
-                <p>
-                    Fashion Categories
-                </p>
-
-            </div>
-
-
-            <div class="stat-box">
-
-                <h3>4.8</h3>
-
-                <p>
-                    Customer Rating
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
+  <!-- =========================
      MISSION
 ========================= -->
 
-    <section class="mission-section">
+  <section class="mission-section">
+    <div class="container mission-grid">
+      <div class="mission-title">
+        <span class="section-label"> WHAT WE BELIEVE </span>
 
-        <div class="container mission-grid">
+        <h2>
+          Fashion With
+          <br />
+          A Purpose
+        </h2>
+      </div>
 
-            <div class="mission-title">
+      <div class="mission-content">
+        <p>
+          Our goal is simple — make great fashion accessible to everyone
+          without compromising on style or quality.
+        </p>
 
-                <span class="section-label">
-                    WHAT WE BELIEVE
-                </span>
+        <p>
+          Every product is selected with our customers in mind, so you can
+          find something that feels as good as it looks.
+        </p>
+      </div>
+    </div>
+  </section>
 
-                <h2>
-                    Fashion With
-                    <br>
-                    A Purpose
-                </h2>
-
-            </div>
-
-
-            <div class="mission-content">
-
-                <p>
-                    Our goal is simple — make great fashion accessible
-                    to everyone without compromising on style or quality.
-                </p>
-
-                <p>
-                    Every product is selected with our customers in mind,
-                    so you can find something that feels as good as it looks.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
+  <!-- =========================
      WHY SHOP WITH US
 ========================= -->
 
-    <section class="features-section">
+  <section class="features-section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label"> WHY SHOP WITH US </span>
 
-        <div class="container">
+        <h2>Designed Around You</h2>
 
-            <div class="section-heading">
+        <p>
+          Everything we do is focused on making your shopping experience
+          simple, reliable and enjoyable.
+        </p>
+      </div>
 
-                <span class="section-label">
-                    WHY SHOP WITH US
-                </span>
+      <div class="features-grid">
+        <!-- Feature 01 -->
 
-                <h2>
-                    Designed Around You
-                </h2>
+        <div class="feature-card">
+          <span class="feature-number"> 01 </span>
 
-                <p>
-                    Everything we do is focused on making your shopping
-                    experience simple, reliable and enjoyable.
-                </p>
+          <h3>Quality First</h3>
 
-            </div>
-
-
-            <div class="features-grid">
-
-                <!-- Feature 01 -->
-
-                <div class="feature-card">
-
-                    <span class="feature-number">
-                        01
-                    </span>
-
-                    <h3>
-                        Quality First
-                    </h3>
-
-                    <p>
-                        We focus on quality materials, reliable products
-                        and carefully selected collections.
-                    </p>
-
-                </div>
-
-
-                <!-- Feature 02 -->
-
-                <div class="feature-card">
-
-                    <span class="feature-number">
-                        02
-                    </span>
-
-                    <h3>
-                        Modern Style
-                    </h3>
-
-                    <p>
-                        Discover contemporary designs inspired by the
-                        latest fashion trends.
-                    </p>
-
-                </div>
-
-
-                <!-- Feature 03 -->
-
-                <div class="feature-card">
-
-                    <span class="feature-number">
-                        03
-                    </span>
-
-                    <h3>
-                        Easy Shopping
-                    </h3>
-
-                    <p>
-                        A simple and smooth shopping experience from
-                        browsing products to checkout.
-                    </p>
-
-                </div>
-
-
-                <!-- Feature 04 -->
-
-                <div class="feature-card">
-
-                    <span class="feature-number">
-                        04
-                    </span>
-
-                    <h3>
-                        Customer First
-                    </h3>
-
-                    <p>
-                        Your satisfaction matters to us. We're always
-                        working to make your experience better.
-                    </p>
-
-                </div>
-
-            </div>
-
+          <p>
+            We focus on quality materials, reliable products and carefully
+            selected collections.
+          </p>
         </div>
 
-    </section>
+        <!-- Feature 02 -->
 
+        <div class="feature-card">
+          <span class="feature-number"> 02 </span>
 
-    <!-- =========================
+          <h3>Modern Style</h3>
+
+          <p>
+            Discover contemporary designs inspired by the latest fashion
+            trends.
+          </p>
+        </div>
+
+        <!-- Feature 03 -->
+
+        <div class="feature-card">
+          <span class="feature-number"> 03 </span>
+
+          <h3>Easy Shopping</h3>
+
+          <p>
+            A simple and smooth shopping experience from browsing products to
+            checkout.
+          </p>
+        </div>
+
+        <!-- Feature 04 -->
+
+        <div class="feature-card">
+          <span class="feature-number"> 04 </span>
+
+          <h3>Customer First</h3>
+
+          <p>
+            Your satisfaction matters to us. We're always working to make your
+            experience better.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
      FASHION BANNER
 ========================= -->
 
-    <section class="fashion-banner">
+  <section class="fashion-banner">
+    <img src="images/photo-1529374255404-311a2a4f1fd9.avif" alt="New Fashion Collection" />
 
-        <img src="images/photo-1529374255404-311a2a4f1fd9.avif" alt="New Fashion Collection">
+    <div class="banner-content">
+      <span> NEW COLLECTION </span>
 
-        <div class="banner-content">
+      <h2>
+        Find Your
+        <br />
+        Everyday Style
+      </h2>
 
-            <span>
-                NEW COLLECTION
-            </span>
+      <a href="products-list.html" class="primary-btn"> SHOP COLLECTION </a>
+    </div>
+  </section>
 
-            <h2>
-                Find Your
-                <br>
-                Everyday Style
-            </h2>
-
-            <a href="products-list.html" class="primary-btn">
-                SHOP COLLECTION
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
+  <!-- =========================
      OUR VALUES
 ========================= -->
 
-    <section class="values-section">
+  <section class="values-section">
+    <div class="container">
+      <div class="section-heading">
+        <span class="section-label"> OUR VALUES </span>
 
-        <div class="container">
+        <h2>What Matters To Us</h2>
+      </div>
 
-            <div class="section-heading">
+      <div class="values-grid">
+        <!-- Value 01 -->
 
-                <span class="section-label">
-                    OUR VALUES
-                </span>
+        <div class="value-card">
+          <span> 01 </span>
 
-                <h2>
-                    What Matters To Us
-                </h2>
+          <h3>Authenticity</h3>
 
-            </div>
-
-
-            <div class="values-grid">
-
-                <!-- Value 01 -->
-
-                <div class="value-card">
-
-                    <span>
-                        01
-                    </span>
-
-                    <h3>
-                        Authenticity
-                    </h3>
-
-                    <p>
-                        Be yourself, wear what makes you feel confident
-                        and express your individual style.
-                    </p>
-
-                </div>
-
-
-                <!-- Value 02 -->
-
-                <div class="value-card">
-
-                    <span>
-                        02
-                    </span>
-
-                    <h3>
-                        Quality
-                    </h3>
-
-                    <p>
-                        We believe great design should always be supported
-                        by dependable quality.
-                    </p>
-
-                </div>
-
-
-                <!-- Value 03 -->
-
-                <div class="value-card">
-
-                    <span>
-                        03
-                    </span>
-
-                    <h3>
-                        Innovation
-                    </h3>
-
-                    <p>
-                        We continue to explore new ideas, styles and ways
-                        to improve the shopping experience.
-                    </p>
-
-                </div>
-
-            </div>
-
+          <p>
+            Be yourself, wear what makes you feel confident and express your
+            individual style.
+          </p>
         </div>
 
-    </section>
+        <!-- Value 02 -->
 
+        <div class="value-card">
+          <span> 02 </span>
 
-    <!-- =========================
+          <h3>Quality</h3>
+
+          <p>
+            We believe great design should always be supported by dependable
+            quality.
+          </p>
+        </div>
+
+        <!-- Value 03 -->
+
+        <div class="value-card">
+          <span> 03 </span>
+
+          <h3>Innovation</h3>
+
+          <p>
+            We continue to explore new ideas, styles and ways to improve the
+            shopping experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================
      CTA
 ========================= -->
 
-    <section class="about-cta">
+  <!-- ===== START: NEWSLETTER SECTION ===== -->
+  <section class="newsletter-section reveal">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mb-4">Subscribe To Our Newsletter</h2>
+          <p class="mb-4">
+            Subscribe to our latest newsletter to get news about special
+            discounts & upcoming sales
+          </p>
+          <div class="newsletter-form">
+            <div class="input-group">
+              <input type="email" class="newsletter-input" placeholder="Your Email Address" />
+              <button class="newsletter-btn glow-on-hover">SUBSCRIBE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===== END: NEWSLETTER SECTION ===== -->
 
-        <div class="cta-content">
-
-            <span>
-                READY TO FIND YOUR STYLE?
-            </span>
-
-            <h2>
-                Your Style.
-                <br>
-                Your Story.
-            </h2>
-
-            <p>
-                Explore our latest collection and discover pieces
-                made for your everyday moments.
-            </p>
-
-            <a href="products-list.html" class="primary-btn">
-                START SHOPPING
-            </a>
-
+  <!-- ===== START: FOOTER SECTION ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <h5 class="footer-title">About Information</h5>
+          <p><i class="fas fa-store me-2"></i> Fashion Store</p>
+          <p>
+            <i class="fas fa-location-dot me-2"></i> Union Trade Ipsum Doler
+          </p>
+          <p><i class="fas fa-envelope me-2"></i> gmail@example.com</p>
+          <p><i class="fas fa-phone me-2"></i> 91 8002336671</p>
         </div>
 
-    </section>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Your Account</h5>
+          <ul class="footer-links">
+            <li><a href="products-list.html">Search</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+              <li><a href="footer-info.html?page=delivery-information">Delivery Information</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="Blog.html">Our Stories</a></li>
+          </ul>
+        </div>
 
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="footer-info.html?page=size-chart">Size Chart</a></li>
+            <li><a href="footer-info.html?page=shipping">Shipping</a></li>
+            <li><a href="footer-info.html?page=legal-notice">Legal Notice</a></li>
+            <li><a href="footer-info.html?page=delivery">Delivery</a></li>
+            <li><a href="footer-info.html?page=sitemap">Sitemap</a></li>
+          </ul>
+        </div>
 
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Quick links</h5>
+          <ul class="footer-links">
+            <li><a href="footer-info.html?page=privacy-policy">Privacy Policy</a></li>
+            <li><a href="footer-info.html?page=refund-policy">Refund Policy</a></li>
+            <li><a href="footer-info.html?page=shipping-policy">Shipping Policy</a></li>
+            <li><a href="footer-info.html?page=terms-of-service">Terms of Service</a></li>
+            <li><a href="footer-info.html?page=buyer-policy">Policy for Buyers</a></li>
+            <li><a href="footer-info.html?page=seller-policy">Policy for Sellers</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+          <h5 class="footer-title">Follow Us</h5>
+          <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p class="mb-0">© 2026 Fashion Store. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- ===== END: FOOTER SECTION ===== -->
+
+  <div class="cart-sidebar" id="cartSidebar" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h3 class="cart-title">Shopping Cart</h3>
+      <button class="close-cart" id="closeCart" type="button" aria-label="Close cart">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart" id="emptyCart">
+        <i class="fas fa-shopping-bag fa-3x mb-3"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotalPrice">$0.00</span>
+      </div>
+      <div class="cart-buttons">
+        <a href="./view-cart.html" class="cart-btn btn-view-cart">View Cart</a>
+        <a href="#" class="cart-btn btn-checkout">Checkout</a>
+      </div>
+    </div>
+  </div>
+  <div class="overlay" id="cartOverlay"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/cart.js"></script>
 </body>
 
 </html>

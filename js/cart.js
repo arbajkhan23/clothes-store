@@ -773,11 +773,11 @@ class CartManager {
         const iconBtn = icon.closest(".icon-btn");
         if (iconBtn && !iconBtn.querySelector(".fa-user, .fa-heart")) {
           iconBtn.addEventListener("click", (e) => {
-            e.preventDefault();
             const cartSidebar = document.getElementById("cartSidebar");
             const overlay = document.getElementById("cartOverlay");
 
             if (cartSidebar && overlay) {
+              e.preventDefault();
               cartSidebar.classList.add("active");
               overlay.classList.add("active");
               document.body.style.overflow = "hidden";
